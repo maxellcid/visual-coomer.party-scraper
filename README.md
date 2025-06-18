@@ -79,7 +79,7 @@ The website that this scraper targets is known to host media that is taken from 
 If you enjoy this project and want to support its continued development, you can buy me a coffee with Bitcoin :)
 
 ```
-bc1q7fea7t5twypa4d2vg63qqw7a2tz9e3h2ke95wp
+
 ```
 
 ![bitcoin QR code](./img/bitcoin_qr_code.png)
