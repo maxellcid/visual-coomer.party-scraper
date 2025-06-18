@@ -87,6 +87,7 @@ The website that this scraper targets is known to host media that is taken from 
 If you enjoy this project and want to support its continued development, you can buy me a coffee with Bitcoin :)
 
 ```
+bc1qqk258k94fwrc6kdj4jgjdkd0dumw2ncmvg6u7j
 
 ```
 
