@@ -53,6 +53,14 @@ The URL can be a page for an artist, a post from an artist, or a single media fi
 
 If the URL is omitted, then you will be prompted for all parameters during execution.
 
+## Visual interface
+
+Run app.py and open http://127.0.0.1:5000 in the web browser
+
+![Interface](./img/Interface.png)
+
+
+
 ## Docker Container
 
 For a docker container the Github actions is used to automatically build a new docker image on every push on main branch. You can use the docker container with all the arguments listed above. This could be an example configuration of a docker compose file scraping multiple creators and creating subfolders for every creator:
