@@ -6,11 +6,134 @@ import uuid
 import re 
 import signal
 import time 
+import json # Nuevo: para manejar la caché de creadores
+from datetime import datetime, timedelta # Nuevo: para la lógica de caché
+import logging # Ya estaba, pero lo menciono por su uso en la caché
+
+# Importa el cliente API para Coomer/Kemono. Asegúrate de que este archivo exista en la misma carpeta.
+from coomer_api_client import CoomerApiClient
+
+# Configuración de Logging
+logging.basicConfig(level=logging.INFO, format='[%(asctime)s] %(message)s')
 
 app = Flask(__name__)
 
 # Diccionario para almacenar el estado de las tareas de scraping
 scrape_tasks = {}
+
+# =========================================================
+# NUEVO: Lógica de Caché para la lista de Creadores (del buscador)
+# =========================================================
+api_client = CoomerApiClient() # Instancia del cliente API para obtener creadores
+
+CACHE_FILE = 'creators_cache.json' # Archivo para guardar la caché
+creators_cache = [] # Lista global para almacenar los creadores
+cache_last_updated = None # Fecha/hora de la última actualización de la caché
+cache_status_message = "Cargando lista de creadores..." # Mensaje de estado inicial
+cache_lock = threading.Lock() # Bloqueo para proteger el acceso a la caché compartida
+
+CACHE_LIFESPAN_HOURS = 24 # Tiempo de vida de la caché antes de intentar una nueva descarga
+
+# --- Funciones de la caché ---
+
+def load_cache_from_file():
+    """Intenta cargar la caché de creadores desde un archivo local."""
+    global creators_cache, cache_last_updated, cache_status_message
+
+    if os.path.exists(CACHE_FILE):
+        try:
+            with open(CACHE_FILE, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                creators_cache = data.get('creators', [])
+                last_updated_str = data.get('last_updated')
+                if last_updated_str:
+                    cache_last_updated = datetime.fromisoformat(last_updated_str)
+                else:
+                    cache_last_updated = None
+                
+                logging.info(f"Caché cargada desde '{CACHE_FILE}' con {len(creators_cache)} elementos.")
+                logging.info(f"Última actualización del archivo: {cache_last_updated.strftime('%Y-%m-%d %H:%M:%S') if cache_last_updated else 'Nunca'}")
+                cache_status_message = f"Cargado {len(creators_cache)} creadores desde archivo."
+                return True
+        except json.JSONDecodeError as e:
+            logging.error(f"Error al leer el archivo de caché JSON '{CACHE_FILE}': {e}")
+            cache_status_message = "Error al cargar la caché desde el archivo."
+            return False
+        except Exception as e:
+            logging.error(f"Error inesperado al cargar la caché desde '{CACHE_FILE}': {e}")
+            cache_status_message = "Error inesperado al cargar la caché."
+            return False
+    else:
+        logging.info(f"Archivo de caché '{CACHE_FILE}' no encontrado.")
+        cache_status_message = "Caché no encontrada en disco."
+        return False
+
+def save_cache_to_file():
+    """Guarda la caché de creadores actual en un archivo local."""
+    global creators_cache, cache_last_updated
+    try:
+        data = {
+            'creators': creators_cache,
+            'last_updated': cache_last_updated.isoformat() if cache_last_updated else None
+        }
+        with open(CACHE_FILE, 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=False, indent=4)
+        logging.info(f"Caché guardada en '{CACHE_FILE}'.")
+    except Exception as e:
+        logging.error(f"Error al guardar la caché en '{CACHE_FILE}': {e}")
+
+def update_creators_cache_in_background(force_update=False):
+    """
+    Descarga la última lista de creadores en segundo plano.
+    Utiliza un bloqueo para evitar actualizaciones concurrentes.
+    """
+    global creators_cache, cache_last_updated, cache_status_message
+
+    if not cache_lock.acquire(blocking=False): # Intenta adquirir el bloqueo sin esperar
+        logging.info("Intento de actualización en segundo plano: el bloqueo de la caché ya está en uso. Saltando esta ejecución.")
+        return # Si el bloqueo ya está en uso, otra actualización ya está en curso
+
+    try:
+        current_time = datetime.now()
+        # Si no es una actualización forzada y la caché no ha caducado, no hacer nada
+        if not force_update and cache_last_updated and (current_time - cache_last_updated) < timedelta(hours=CACHE_LIFESPAN_HOURS):
+            logging.info("Caché de creadores actualizada hace menos de 24 horas. No se requiere descarga.")
+            cache_status_message = f"Cargado {len(creators_cache)} creadores (reciente)."
+            return # Salir si no se necesita actualizar
+
+        logging.info("Intentando descargar la última lista de creadores de Coomer API...")
+        cache_status_message = "Descargando la lista de creadores..." # Actualiza el estado visible para el frontend
+
+        downloaded_creators = api_client.get_all_creators() # Llama al cliente API
+
+        if downloaded_creators:
+            creators_cache = downloaded_creators
+            cache_last_updated = datetime.now()
+            save_cache_to_file() # Guarda la caché actualizada en el disco
+            cache_status_message = f"Cargado {len(creators_cache)} creadores (actualizado)."
+            logging.info(f"Descarga exitosa. Creadores encontrados: {len(creators_cache)}")
+        else:
+            cache_status_message = f"Fallo al descargar. Se mantiene la caché anterior ({len(creators_cache)} creadores) si existe."
+            logging.error("Fallo la descarga de creadores. La caché no fue actualizada.")
+    finally:
+        cache_lock.release() # Asegura que el bloqueo se libere siempre
+
+def initialize_app_on_startup():
+    """Se ejecuta una vez al iniciar la aplicación para cargar y actualizar la caché de creadores."""
+    global cache_status_message
+    
+    # 1. Intentar cargar la caché del archivo local
+    if load_cache_from_file():
+        cache_status_message = f"Cargado {len(creators_cache)} creadores desde archivo."
+    else:
+        cache_status_message = "Caché vacía. Iniciando descarga en segundo plano."
+
+    # 2. Iniciar el hilo de actualización en segundo plano
+    threading.Thread(target=update_creators_cache_in_background).start()
+# =========================================================
+# FIN: Lógica de Caché para la lista de Creadores
+# =========================================================
+
 
 @app.route('/', methods=['GET'])
 def index():
@@ -203,5 +326,55 @@ def stop_scrape(task_id):
     else:
         return jsonify({"status": "info", "message": "El scraping no está activo o ya ha terminado."}), 200
 
+# =========================================================
+# NUEVO: Rutas API para la lista de Creadores (del buscador)
+# =========================================================
+@app.route('/api/creators')
+def get_creators():
+    """
+    Devuelve la lista cacheadada de creadores.
+    Si la caché está caducada o vacía, inicia una actualización en segundo plano.
+    """
+    # Intenta adquirir el bloqueo, si no lo consigue en 5 segundos, devuelve un error 503
+    if not cache_lock.acquire(timeout=5): 
+        logging.warning("El bloqueo de caché está en uso, no se pudo obtener la lista de creadores a tiempo.")
+        return jsonify({"message": "La caché de creadores se está actualizando. Por favor, intente de nuevo en unos segundos."}), 503
+
+    try:
+        if creators_cache:
+            current_time = datetime.now()
+            # Si la caché ha caducado, inicia una actualización silenciosa en segundo plano
+            if cache_last_updated and (current_time - cache_last_updated) >= timedelta(hours=CACHE_LIFESPAN_HOURS):
+                logging.info("Caché caducada. Iniciando actualización silenciosa en segundo plano.")
+                threading.Thread(target=update_creators_cache_in_background).start()
+                
+            # Devuelve los datos de la caché
+            return jsonify({
+                'creators': creators_cache,
+                'last_updated': cache_last_updated.isoformat() if cache_last_updated else None,
+                'status': cache_status_message
+            })
+        else:
+            # Si la caché está vacía, fuerza una actualización y notifica al cliente
+            logging.warning("Caché de creadores vacía. Forzando una actualización en segundo plano.")
+            threading.Thread(target=update_creators_cache_in_background).start()
+            return jsonify({"message": "La caché está vacía. Iniciando descarga. Por favor, recargue en unos segundos."}), 503
+    finally:
+        cache_lock.release() # Asegura que el bloqueo se libere siempre
+
+@app.route('/api/update_creators', methods=['POST'])
+def trigger_update_creators(): # Nombre cambiado para evitar conflicto si ambos app.py existieran en el mismo scope
+    """Endpoint para forzar una actualización manual de la caché de creadores."""
+    logging.info("Solicitud de actualización forzada recibida para la caché de creadores.")
+    threading.Thread(target=update_creators_cache_in_background, args=(True,)).start()
+    return jsonify({"message": "Actualización de creadores iniciada en segundo plano."}), 202
+# =========================================================
+# FIN: Rutas API para la lista de Creadores
+# =========================================================
+
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    # --- MODIFICACIÓN: Llamar a la función de inicialización de la caché ---
+    initialize_app_on_startup() 
+    # --- FIN MODIFICACIÓN ---
+    app.run(debug=True, threaded=True) # `threaded=True` es importante para manejar hilos de scraping
