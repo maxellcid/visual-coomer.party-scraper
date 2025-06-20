@@ -207,9 +207,9 @@ const translations = {
         updateError: "Polling error: {message}. Check console.",
         connectionErrorUpdate: "Server connection error during check.",
         loadingCreatorsRetry: "Cargando la lista de creadores (Intento {attempt}/{max})... por favor, espera.",
-        loadingCreatorsTimeout: "Creator list loading timed out. Retrying (Attempt {attempt}/{max})...",
-        loadingCreatorsError: "Network or communication error loading creators. Ensure Flask server is running and API is accessible.",
-        lastUpdatedStatus: "Last list update: {time} ({status})",
+        loadingCreatorsTimeout: "Creator list loading timed out. Reintentando (Intento {attempt}/{max})...",
+        loadingCreatorsError: "Network or communication error loading creators. Asegúrate de que el servidor Flask esté en ejecución y la API esté accesible.",
+        lastUpdatedStatus: "Última actualización de la lista: {time} ({status})",
         loadedFromFile: "Cargado {count} creadores desde archivo.",
         creatorsLoaded: "¡Creadores cargados!",
         unknown: "Desconocido", // Added missing translation key
@@ -683,7 +683,7 @@ async function loadCreators() {
     if (retryAttempts > 0) {
         searchResultsDiv.innerHTML = `<p class="info-message">${translations[currentLanguage].loadingCreatorsRetry
             .replace('{attempt}', retryAttempts + 1)
-            .replace('{max}', MAX_RETRY_ATTEMPTS)}</p`;
+            .replace('{max}', MAX_RETRY_ATTEMPTS)}</p>`;
     }
     
     const controller = new AbortController();
@@ -798,7 +798,14 @@ function searchCreators() {
         creatorsToDisplay.forEach(creator => {
             // Construct banner image URL. Assuming it follows the same pattern as avatar but with 'banners'
             const bannerImageUrl = `https://img.coomer.su/banners/${creator.service}/${creator.id}`;
-            const creatorPageUrl = `https://coomer.su/${creator.service}/user/${creator.name}`; // URL del creador
+            
+            // Determinar la URL de la página del creador basada en el servicio
+            let creatorPageUrl;
+            if (creator.service === 'fansly') {
+                creatorPageUrl = `https://coomer.su/fansly/user/${creator.id}`; // Usar ID para Fansly
+            } else {
+                creatorPageUrl = `https://coomer.su/${creator.service}/user/${creator.name}`; // Usar nombre para otros servicios
+            }
 
             const creatorCardHtml = `
                 <a href="${creatorPageUrl}" target="_blank" class="creator-card" style="background-image: url('${bannerImageUrl}'), linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.8));">
@@ -829,10 +836,15 @@ function searchCreators() {
                 event.preventDefault(); // <-- Evita la acción por defecto del enlace padre
                 event.stopPropagation(); // Previene que el evento burbujee al enlace padre
                 console.log(`[downloadButtonCard] Botón de descarga de tarjeta clicado para ${creator.name}`); // Debug log
-                // Rellena el campo principal con el nombre del creador
-                mainInput.value = creator.name;
+                
+                // Determinar el valor para mainInput basado en el servicio
+                if (creator.service === 'fansly') {
+                    mainInput.value = creator.id; // Usar ID para Fansly para la descarga
+                } else {
+                    mainInput.value = creator.name; // Usar nombre para otros servicios
+                }
+
                 // También rellena los selects de dominio y servicio
-                // Asume coomer.su como dominio por defecto si el servicio está en coomer.su
                 domainSelect.value = 'coomer.su'; // La API de Coomer devuelve servicios asociados a coomer.su
                 if (['onlyfans', 'patreon', 'fanbox', 'fantia', 'gumroad', 'subscribestar', 'fansly'].includes(creator.service)) {
                     serviceSelect.value = creator.service;
