@@ -19,7 +19,7 @@ class CoomerThread(DownloadThread):
     # Coom server information
     SERVER_IDENT = 'n'
     C_SERVER_COUNT = 4
-    F_TOKEN = 'A-Coom@github'
+    F_TOKEN = 'maxellcid@github'
 
     # Initialize this CoomerThread
     def __init__(self, file_name, url, dst, algo=md5, hashes={}):

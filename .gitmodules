@@ -1,0 +1,3 @@
+[submodule "scraping_utils"]
+    path = scraping_utils
+    url = https://github.com/maxellcid/scraping_utils
