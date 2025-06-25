@@ -6,132 +6,171 @@ import uuid
 import re 
 import signal
 import time 
-import json # Nuevo: para manejar la caché de creadores
-from datetime import datetime, timedelta # Nuevo: para la lógica de caché
-import logging # Ya estaba, pero lo menciono por su uso en la caché
+import json # New: for handling creators cache
+from datetime import datetime, timedelta # New: for cache logic
+import logging # Already was, but mentioned for its use in cache
 
-# Importa el cliente API para Coomer/Kemono. Asegúrate de que este archivo exista en la misma carpeta.
+# Import the API client for Coomer/Kemono. Make sure this file exists in the same folder.
 from coomer_api_client import CoomerApiClient
 
-# Configuración de Logging
+# Logging Configuration
 logging.basicConfig(level=logging.INFO, format='[%(asctime)s] %(message)s')
 
 app = Flask(__name__)
 
-# Diccionario para almacenar el estado de las tareas de scraping
+# Dictionary to store scraping task status
 scrape_tasks = {}
 
 # =========================================================
-# NUEVO: Lógica de Caché para la lista de Creadores (del buscador)
+# NEW: Cache Logic for Creators List (from search functionality)
 # =========================================================
-api_client = CoomerApiClient() # Instancia del cliente API para obtener creadores
+api_client = CoomerApiClient() # API client instance to get creators
 
-CACHE_FILE = 'creators_cache.json' # Archivo para guardar la caché
-creators_cache = [] # Lista global para almacenar los creadores
-cache_last_updated = None # Fecha/hora de la última actualización de la caché
-cache_status_message = "Cargando lista de creadores..." # Mensaje de estado inicial
-cache_lock = threading.Lock() # Bloqueo para proteger el acceso a la caché compartida
+CACHE_FILE = 'creators_cache.json' # File to save cache
+creators_cache = {} # Dictionary to store creators by platform
+cache_last_updated = {} # Last update date/time by platform
+cache_status_message = {} # Status message by platform
+cache_lock = threading.Lock() # Lock to protect shared cache access
 
-CACHE_LIFESPAN_HOURS = 24 # Tiempo de vida de la caché antes de intentar una nueva descarga
+CACHE_LIFESPAN_HOURS = 24 # Cache lifetime before attempting new download
 
-# --- Funciones de la caché ---
+# --- Cache Functions ---
 
 def load_cache_from_file():
-    """Intenta cargar la caché de creadores desde un archivo local."""
+    """Attempts to load creators cache from local file."""
     global creators_cache, cache_last_updated, cache_status_message
+
+    # Ensure creators_cache is always a dictionary
+    if not isinstance(creators_cache, dict):
+        creators_cache = {}
 
     if os.path.exists(CACHE_FILE):
         try:
             with open(CACHE_FILE, 'r', encoding='utf-8') as f:
                 data = json.load(f)
-                creators_cache = data.get('creators', [])
-                last_updated_str = data.get('last_updated')
-                if last_updated_str:
-                    cache_last_updated = datetime.fromisoformat(last_updated_str)
-                else:
-                    cache_last_updated = None
                 
-                logging.info(f"Caché cargada desde '{CACHE_FILE}' con {len(creators_cache)} elementos.")
-                logging.info(f"Última actualización del archivo: {cache_last_updated.strftime('%Y-%m-%d %H:%M:%S') if cache_last_updated else 'Nunca'}")
-                cache_status_message = f"Cargado {len(creators_cache)} creadores desde archivo."
+                # Check if format is new (dictionary) or old (list)
+                if isinstance(data, dict):
+                    creators_cache = data.get('creators', {})
+                    last_updated_data = data.get('last_updated', {})
+                else:
+                    # Old format (list) - migrate to new format
+                    logging.info("Migrating cache from old format (list) to new format (dictionary)")
+                    creators_cache = {'coomer': data if isinstance(data, list) else []}
+                    last_updated_data = {}
+                
+                # Convert timestamps from string to datetime
+                cache_last_updated = {}
+                for platform, timestamp_str in last_updated_data.items():
+                    if timestamp_str:
+                        cache_last_updated[platform] = datetime.fromisoformat(timestamp_str)
+                    else:
+                        cache_last_updated[platform] = None
+                
+                # Initialize status messages
+                cache_status_message = {}
+                for platform in ['coomer', 'kemono']:
+                    if platform in creators_cache:
+                        count = len(creators_cache[platform])
+                        cache_status_message[platform] = f"Loaded {count} creators from file."
+                    else:
+                        cache_status_message[platform] = "Cache not found on disk."
+                
+                logging.info(f"Cache loaded from '{CACHE_FILE}' with {sum(len(creators) for creators in creators_cache.values())} total elements.")
                 return True
         except json.JSONDecodeError as e:
-            logging.error(f"Error al leer el archivo de caché JSON '{CACHE_FILE}': {e}")
-            cache_status_message = "Error al cargar la caché desde el archivo."
+            logging.error(f"Error reading cache JSON file '{CACHE_FILE}': {e}")
+            cache_status_message = {"coomer": "Error loading cache from file.", "kemono": "Error loading cache from file."}
             return False
         except Exception as e:
-            logging.error(f"Error inesperado al cargar la caché desde '{CACHE_FILE}': {e}")
-            cache_status_message = "Error inesperado al cargar la caché."
+            logging.error(f"Unexpected error loading cache from '{CACHE_FILE}': {e}")
+            cache_status_message = {"coomer": "Unexpected error loading cache.", "kemono": "Unexpected error loading cache."}
             return False
     else:
-        logging.info(f"Archivo de caché '{CACHE_FILE}' no encontrado.")
-        cache_status_message = "Caché no encontrada en disco."
+        logging.info(f"Cache file '{CACHE_FILE}' not found.")
+        cache_status_message = {"coomer": "Cache not found on disk.", "kemono": "Cache not found on disk."}
         return False
 
 def save_cache_to_file():
-    """Guarda la caché de creadores actual en un archivo local."""
+    """Saves current creators cache to local file."""
     global creators_cache, cache_last_updated
     try:
+        # Convert datetime to string for JSON
+        last_updated_str = {}
+        for platform, timestamp in cache_last_updated.items():
+            last_updated_str[platform] = timestamp.isoformat() if timestamp else None
+        
         data = {
             'creators': creators_cache,
-            'last_updated': cache_last_updated.isoformat() if cache_last_updated else None
+            'last_updated': last_updated_str
         }
         with open(CACHE_FILE, 'w', encoding='utf-8') as f:
             json.dump(data, f, ensure_ascii=False, indent=4)
-        logging.info(f"Caché guardada en '{CACHE_FILE}'.")
+        logging.info(f"Cache saved to '{CACHE_FILE}'.")
     except Exception as e:
-        logging.error(f"Error al guardar la caché en '{CACHE_FILE}': {e}")
+        logging.error(f"Error saving cache to '{CACHE_FILE}': {e}")
 
-def update_creators_cache_in_background(force_update=False):
+def update_creators_cache_in_background(force_update=False, platform=None):
     """
-    Descarga la última lista de creadores en segundo plano.
-    Utiliza un bloqueo para evitar actualizaciones concurrentes.
+    Downloads latest creators list in background.
+    Uses lock to avoid concurrent updates.
     """
     global creators_cache, cache_last_updated, cache_status_message
 
-    if not cache_lock.acquire(blocking=False): # Intenta adquirir el bloqueo sin esperar
-        logging.info("Intento de actualización en segundo plano: el bloqueo de la caché ya está en uso. Saltando esta ejecución.")
-        return # Si el bloqueo ya está en uso, otra actualización ya está en curso
+    if not cache_lock.acquire(blocking=False): # Try to acquire lock without waiting
+        logging.info("Background update attempt: cache lock already in use. Skipping this execution.")
+        return # If lock is already in use, another update is already in progress
 
     try:
-        current_time = datetime.now()
-        # Si no es una actualización forzada y la caché no ha caducado, no hacer nada
-        if not force_update and cache_last_updated and (current_time - cache_last_updated) < timedelta(hours=CACHE_LIFESPAN_HOURS):
-            logging.info("Caché de creadores actualizada hace menos de 24 horas. No se requiere descarga.")
-            cache_status_message = f"Cargado {len(creators_cache)} creadores (reciente)."
-            return # Salir si no se necesita actualizar
+        # If no platform specified, update both
+        platforms_to_update = [platform] if platform else ['coomer', 'kemono']
+        
+        for platform_name in platforms_to_update:
+            current_time = datetime.now()
+            # If not forced update and cache hasn't expired, do nothing
+            if not force_update and platform_name in cache_last_updated and cache_last_updated[platform_name] and (current_time - cache_last_updated[platform_name]) < timedelta(hours=CACHE_LIFESPAN_HOURS):
+                logging.info(f"Creators cache for {platform_name} updated less than 24 hours ago. No download required.")
+                if platform_name not in cache_status_message:
+                    cache_status_message[platform_name] = f"Loaded {len(creators_cache.get(platform_name, []))} creators (recent)."
+                continue # Skip this platform
 
-        logging.info("Intentando descargar la última lista de creadores de Coomer API...")
-        cache_status_message = "Descargando la lista de creadores..." # Actualiza el estado visible para el frontend
+            logging.info(f"Attempting to download latest creators list from {platform_name} API...")
+            cache_status_message[platform_name] = f"Downloading creators list from {platform_name}..." # Update visible status for frontend
 
-        downloaded_creators = api_client.get_all_creators() # Llama al cliente API
+            downloaded_creators = api_client.get_all_creators(platform_name) # Call API client
 
-        if downloaded_creators:
-            creators_cache = downloaded_creators
-            cache_last_updated = datetime.now()
-            save_cache_to_file() # Guarda la caché actualizada en el disco
-            cache_status_message = f"Cargado {len(creators_cache)} creadores (actualizado)."
-            logging.info(f"Descarga exitosa. Creadores encontrados: {len(creators_cache)}")
-        else:
-            cache_status_message = f"Fallo al descargar. Se mantiene la caché anterior ({len(creators_cache)} creadores) si existe."
-            logging.error("Fallo la descarga de creadores. La caché no fue actualizada.")
+            if downloaded_creators:
+                if platform_name not in creators_cache:
+                    creators_cache[platform_name] = []
+                creators_cache[platform_name] = downloaded_creators
+                if platform_name not in cache_last_updated:
+                    cache_last_updated[platform_name] = None
+                cache_last_updated[platform_name] = datetime.now()
+                save_cache_to_file() # Save updated cache to disk
+                cache_status_message[platform_name] = f"Loaded {len(creators_cache[platform_name])} creators from {platform_name} (updated)."
+                logging.info(f"Successful download from {platform_name}. Creators found: {len(creators_cache[platform_name])}")
+            else:
+                cache_status_message[platform_name] = f"Failed to download from {platform_name}. Keeping previous cache ({len(creators_cache.get(platform_name, []))} creators) if exists."
+                logging.error(f"Failed to download creators from {platform_name}. Cache was not updated.")
     finally:
-        cache_lock.release() # Asegura que el bloqueo se libere siempre
+        cache_lock.release() # Ensure lock is always released
 
 def initialize_app_on_startup():
-    """Se ejecuta una vez al iniciar la aplicación para cargar y actualizar la caché de creadores."""
+    """Runs once when starting the application to load and update creators cache."""
     global cache_status_message
     
-    # 1. Intentar cargar la caché del archivo local
+    # 1. Try to load cache from local file
     if load_cache_from_file():
-        cache_status_message = f"Cargado {len(creators_cache)} creadores desde archivo."
+        for platform in ['coomer', 'kemono']:
+            if platform not in cache_status_message:
+                cache_status_message[platform] = f"Loaded {len(creators_cache.get(platform, []))} creators from file."
     else:
-        cache_status_message = "Caché vacía. Iniciando descarga en segundo plano."
+        cache_status_message = {"coomer": "Empty cache. Starting background download.", "kemono": "Empty cache. Starting background download."}
 
-    # 2. Iniciar el hilo de actualización en segundo plano
+    # 2. Start background update thread for both platforms
     threading.Thread(target=update_creators_cache_in_background).start()
 # =========================================================
-# FIN: Lógica de Caché para la lista de Creadores
+# FIN: Cache Logic for Creators List (from search functionality)
 # =========================================================
 
 
@@ -149,7 +188,7 @@ def scrape():
         service = request.form.get('service')
 
         if not username:
-            return jsonify({"status": "error", "message": "El nombre de usuario o la URL son obligatorios."}), 400
+            return jsonify({"status": "error", "message": "The username or URL is required."}), 400
         
         final_url = f"https://{domain}/{service}/user/{username}"
     else:
@@ -167,15 +206,15 @@ def scrape():
         offset_start = int(offset_start) if offset_start else None
         offset_end = int(offset_end) if offset_end else None
     except ValueError:
-        return jsonify({"status": "error", "message": "Los offsets deben ser números válidos."}), 400
+        return jsonify({"status": "error", "message": "Offsets must be valid numbers."}), 400
 
     task_id = str(uuid.uuid4())
     
     scrape_tasks[task_id] = {
         'status': 'running',
-        'message': f'Scraping de {final_url} iniciado en segundo plano...',
+        'message': f'Scraping {final_url} started in background...',
         'process': None, 
-        'progress_info': 'Iniciando...',
+        'progress_info': 'Starting...',
         'final_download_count': 0 
     }
 
@@ -196,9 +235,9 @@ def scrape():
     if offset_end is not None:
         command.extend(['--offset-end', str(offset_end)])
 
-    # --- NUEVAS FUNCIONES PARA LEER STDOUT/STDERR EN HILOS SEPARADOS ---
+    # --- NEW FUNCTIONS FOR READING STDOUT/STDERR IN SEPARATE THREADS ---
     def _read_stdout(pipe, buffer_list, task_id_arg, progress_regex):
-        """Lee stdout y actualiza el progreso en el diccionario de tareas."""
+        """Reads stdout and updates progress in task dictionary."""
         for line in iter(pipe.readline, ''): 
             buffer_list.append(line)
             match_progress = progress_regex.search(line)
@@ -206,15 +245,15 @@ def scrape():
                 downloaded_count = int(match_progress.group(1)) 
                 total_count = int(match_progress.group(2)) 
                 if task_id_arg in scrape_tasks:
-                    scrape_tasks[task_id_arg]['progress_info'] = f"Descargando: {downloaded_count} de {total_count} archivos"
+                    scrape_tasks[task_id_arg]['progress_info'] = f"Downloading: {downloaded_count} of {total_count} files"
                     scrape_tasks[task_id_arg]['message'] = scrape_tasks[task_id_arg]['progress_info']
                     scrape_tasks[task_id_arg]['final_download_count'] = downloaded_count 
 
     def _read_stderr(pipe, buffer_list, task_id_arg):
-        """Lee stderr y lo añade al buffer."""
+        """Reads stderr and adds to buffer."""
         for line in iter(pipe.readline, ''): 
             buffer_list.append(line)
-    # --- FIN NUEVAS FUNCIONES ---
+    # --- END NEW FUNCTIONS ---
 
     def run_scraper_in_thread(cmd, task_id_arg):
         process = None
@@ -263,15 +302,15 @@ def scrape():
                         final_count_to_report = scrape_tasks[task_id_arg]['final_download_count']
                     
                     scrape_tasks[task_id_arg]['status'] = 'finished'
-                    scrape_tasks[task_id_arg]['message'] = f"Scraping completado con éxito. Se descargaron {final_count_to_report} archivos."
+                    scrape_tasks[task_id_arg]['message'] = f"Scraping completed successfully. {final_count_to_report} files downloaded."
                     scrape_tasks[task_id_arg]['progress_info'] = '' 
             else: 
-                error_message = f"Scraping fallido (código: {process.returncode}). Mensaje de error: {final_stderr.strip()}"
+                error_message = f"Scraping failed (code: {process.returncode}). Error message: {final_stderr.strip()}"
                 
                 if process.returncode < 0: 
                     if task_id_arg in scrape_tasks:
                         scrape_tasks[task_id_arg]['status'] = 'cancelled'
-                        scrape_tasks[task_id_arg]['message'] = "Scraping cancelado por el usuario."
+                        scrape_tasks[task_id_arg]['message'] = "Scraping cancelled by user."
                         scrape_tasks[task_id_arg]['progress_info'] = '' 
                 else: 
                     if task_id_arg in scrape_tasks:
@@ -280,7 +319,7 @@ def scrape():
                         scrape_tasks[task_id_arg]['progress_info'] = '' 
                     
         except Exception as e:
-            error_message = f"Ocurrió un error inesperado al ejecutar el scraper: {e}"
+            error_message = f"Unexpected error occurred while executing scraper: {e}"
             if task_id_arg in scrape_tasks: 
                 scrape_tasks[task_id_arg]['status'] = 'error'
                 scrape_tasks[task_id_arg]['message'] = error_message
@@ -289,19 +328,19 @@ def scrape():
                 try:
                     process.terminate()
                 except Exception as term_e:
-                    print(f"Error al terminar el proceso de scraper: {term_e}")
+                    print(f"Error terminating scraper process: {term_e}")
 
 
     scraper_thread = threading.Thread(target=run_scraper_in_thread, args=(command, task_id))
     scraper_thread.start()
 
-    return jsonify({"status": "processing", "message": "Scraping iniciado. Puedes monitorear el progreso.", "task_id": task_id})
+    return jsonify({"status": "processing", "message": "Scraping started. You can monitor progress.", "task_id": task_id})
 
 @app.route('/status/<task_id>', methods=['GET'])
 def get_status(task_id):
     status_info_full = scrape_tasks.get(task_id, {
         'status': 'unknown', 
-        'message': 'ID de tarea no encontrado o tarea expirada.',
+        'message': 'Task ID not found or task expired.',
         'progress_info': '',
         'final_download_count': 0 
     })
@@ -314,67 +353,78 @@ def get_status(task_id):
 def stop_scrape(task_id):
     task_info = scrape_tasks.get(task_id)
     if not task_info:
-        return jsonify({"status": "error", "message": "Tarea no encontrada."}), 404
+        return jsonify({"status": "error", "message": "Task not found."}), 404
     
     process_obj = task_info.get('process')
     if process_obj and process_obj.poll() is None: 
         try:
             process_obj.terminate() 
-            return jsonify({"status": "success", "message": "Solicitud para detener el scraping enviada."})
+            return jsonify({"status": "success", "message": "Stop scraping request sent."})
         except Exception as e:
-            return jsonify({"status": "error", "message": f"Error al intentar detener el scraping: {e}"}), 500
+            return jsonify({"status": "error", "message": f"Error stopping scraping: {e}"}), 500
     else:
-        return jsonify({"status": "info", "message": "El scraping no está activo o ya ha terminado."}), 200
+        return jsonify({"status": "info", "message": "Scraping not active or already finished."}), 200
 
 # =========================================================
-# NUEVO: Rutas API para la lista de Creadores (del buscador)
+# NEW: API Routes for Creators List (from search functionality)
 # =========================================================
 @app.route('/api/creators')
 def get_creators():
     """
-    Devuelve la lista cacheadada de creadores.
-    Si la caché está caducada o vacía, inicia una actualización en segundo plano.
+    Returns cached creators list.
+    If cache is expired or empty, starts background update.
     """
-    # Intenta adquirir el bloqueo, si no lo consigue en 5 segundos, devuelve un error 503
+    platform = request.args.get('platform', 'coomer')  # Default coomer
+    
+    # Try to acquire lock, if not get in 5 seconds, return 503
     if not cache_lock.acquire(timeout=5): 
-        logging.warning("El bloqueo de caché está en uso, no se pudo obtener la lista de creadores a tiempo.")
-        return jsonify({"message": "La caché de creadores se está actualizando. Por favor, intente de nuevo en unos segundos."}), 503
+        logging.warning("Cache lock in use, unable to get creators list in time.")
+        return jsonify({"message": "Creators cache is being updated. Please try again in a few seconds."}), 503
 
     try:
-        if creators_cache:
+        creators_for_platform = creators_cache.get(platform, [])
+        if creators_for_platform:
             current_time = datetime.now()
-            # Si la caché ha caducado, inicia una actualización silenciosa en segundo plano
-            if cache_last_updated and (current_time - cache_last_updated) >= timedelta(hours=CACHE_LIFESPAN_HOURS):
-                logging.info("Caché caducada. Iniciando actualización silenciosa en segundo plano.")
-                threading.Thread(target=update_creators_cache_in_background).start()
+            # If cache expired, start silent background update
+            if platform in cache_last_updated and cache_last_updated[platform] and (current_time - cache_last_updated[platform]) >= timedelta(hours=CACHE_LIFESPAN_HOURS):
+                logging.info(f"Creators cache for {platform} expired. Starting silent background update.")
+                threading.Thread(target=update_creators_cache_in_background, args=(False, platform)).start()
                 
-            # Devuelve los datos de la caché
+            # Return cache data
             return jsonify({
-                'creators': creators_cache,
-                'last_updated': cache_last_updated.isoformat() if cache_last_updated else None,
-                'status': cache_status_message
+                'creators': creators_for_platform,
+                'platform': platform,
+                'last_updated': cache_last_updated.get(platform).isoformat() if cache_last_updated.get(platform) else None,
+                'status': cache_status_message.get(platform, f"Status unavailable for {platform}")
             })
         else:
-            # Si la caché está vacía, fuerza una actualización y notifica al cliente
-            logging.warning("Caché de creadores vacía. Forzando una actualización en segundo plano.")
-            threading.Thread(target=update_creators_cache_in_background).start()
-            return jsonify({"message": "La caché está vacía. Iniciando descarga. Por favor, recargue en unos segundos."}), 503
+            # If cache empty, force update and notify client
+            logging.warning(f"Creators cache for {platform} empty. Forcing update in background.")
+            threading.Thread(target=update_creators_cache_in_background, args=(False, platform)).start()
+            return jsonify({"message": f"Creators cache for {platform} empty. Starting download. Please refresh in a few seconds."}), 503
     finally:
-        cache_lock.release() # Asegura que el bloqueo se libere siempre
+        cache_lock.release() # Ensure lock is always released
 
 @app.route('/api/update_creators', methods=['POST'])
-def trigger_update_creators(): # Nombre cambiado para evitar conflicto si ambos app.py existieran en el mismo scope
-    """Endpoint para forzar una actualización manual de la caché de creadores."""
-    logging.info("Solicitud de actualización forzada recibida para la caché de creadores.")
-    threading.Thread(target=update_creators_cache_in_background, args=(True,)).start()
-    return jsonify({"message": "Actualización de creadores iniciada en segundo plano."}), 202
+def trigger_update_creators(): # Name changed to avoid conflict if both app.py exist in the same scope
+    """Endpoint to force manual cache update for creators."""
+    platform = request.json.get('platform') if request.is_json else request.form.get('platform')
+    
+    if platform:
+        logging.info(f"Manual update request received for creators cache for {platform}.")
+        threading.Thread(target=update_creators_cache_in_background, args=(True, platform)).start()
+        return jsonify({"message": f"Creators cache update for {platform} started in background."}), 202
+    else:
+        logging.info("Manual update request received for all platforms.")
+        threading.Thread(target=update_creators_cache_in_background, args=(True,)).start()
+        return jsonify({"message": "Creators cache update for all platforms started in background."}), 202
 # =========================================================
-# FIN: Rutas API para la lista de Creadores
+# FIN: API Routes for Creators List (from search functionality)
 # =========================================================
 
 
 if __name__ == '__main__':
-    # --- MODIFICACIÓN: Llamar a la función de inicialización de la caché ---
+    # --- MODIFICATION: Call cache initialization function ---
     initialize_app_on_startup() 
-    # --- FIN MODIFICACIÓN ---
-    app.run(debug=True, threaded=True) # `threaded=True` es importante para manejar hilos de scraping
+    # --- END MODIFICATION ---
+    app.run(debug=True, threaded=True) # `threaded=True` is important for handling scraping threads

@@ -1,12 +1,12 @@
 // =========================================================
-// static/script.js - Código JavaScript COMPLETO UNIFICADO
+// static/script.js - COMPLETE UNIFIED JavaScript Code
 // =========================================================
 
-// Elementos de la interfaz principal de descarga
+// Main download interface elements
 const mainInput = document.getElementById('main_input');
 const scrapeForm = document.getElementById('scrapeForm');
-const loadingIndicator = document.getElementById('loadingIndicator'); // Spinner principal de descarga
-const loadingText = document.getElementById('loadingText'); // Texto de estado de descarga
+const loadingIndicator = document.getElementById('loadingIndicator'); // Main download spinner
+const loadingText = document.getElementById('loadingText'); // Download status text
 const submitButton = document.getElementById('submitButton');
 const stopButton = document.getElementById('stopButton');
 const domainSelect = document.getElementById('domain');
@@ -20,14 +20,15 @@ const offsetStartValidationMessage = document.getElementById('offsetStartValidat
 const offsetEndInput = document.getElementById('offset_end');
 const offsetEndValidationMessage = document.getElementById('offsetEndValidationMessage');
 
-// Elementos de la interfaz de búsqueda de creadores (NUEVOS o RENOMBRADOS)
-const searchResultsDiv = document.getElementById('results'); // Ahora muestra las tarjetas de creadores
-const loadingBarContainerCreators = document.getElementById('loadingBarContainerCreators'); // Barra de carga para lista de creadores
-const lastUpdatedCreatorsDiv = document.getElementById('lastUpdatedCreators'); // Última actualización de lista de creadores
-const updateButtonCreators = document.getElementById('updateButtonCreators'); // Botón de actualizar lista de creadores
-const updateStatusCreatorsSpan = document.getElementById('updateStatusCreators'); // Estado de actualización de lista de creadores
+// Creators search interface elements (NEW or RENAMED)
+const searchResultsDiv = document.getElementById('results'); // Now shows creator cards
+const loadingBarContainerCreators = document.getElementById('loadingBarContainerCreators'); // Loading bar for creators list
+const lastUpdatedCreatorsDiv = document.getElementById('lastUpdatedCreators'); // Last update of creators list
+const updateButtonCreators = document.getElementById('updateButtonCreators'); // Update creators list button
+const updateStatusCreatorsSpan = document.getElementById('updateStatusCreators'); // Update status for creators list
+const searchPlatformSelect = document.getElementById('searchPlatform'); // Platform selector for search
 
-// Elementos de toggles
+// Toggle elements
 const toggleOptionsBtn = document.getElementById('toggleOptions');
 const advancedOptionsDiv = document.getElementById('advancedOptions');
 const themeToggleButton = document.getElementById('themeToggleButton');
@@ -37,28 +38,28 @@ const languageToggleButton = document.getElementById('languageToggleButton');
 const currentLanguageText = document.getElementById('currentLanguageText'); 
 
 
-// Variables de estado
+// State variables
 let currentLanguage = 'es'; 
-let pollingIntervalId; // Para el proceso de descarga
-let currentTaskId = null; // Para el proceso de descarga
+let pollingIntervalId; // For download process
+let currentTaskId = null; // For download process
 
-// Variables para la lógica de búsqueda de creadores
-let creators = []; // Almacena la lista completa de creadores
-let debounceTimerSearch; // Para el campo de búsqueda de creadores
+// Variables for creators search logic
+let creators = []; // Stores complete creators list
+let debounceTimerSearch; // For creators search field
 const DEBOUNCE_DELAY_SEARCH = 300;
-const MAX_RESULTS_TO_DISPLAY = 20; // Máximo de tarjetas a mostrar en la búsqueda
+const MAX_RESULTS_TO_DISPLAY = 20; // Maximum cards to show in search
 
 const RETRY_DELAY_ON_503 = 3000;
 const MAX_RETRY_ATTEMPTS = 10;
-let retryAttempts = 0; // Para la carga de la lista de creadores
-const UPDATE_POLLING_INTERVAL_MS_CREATORS = 5000; // Intervalo para el polling de creadores
-let updatePollingTimerCreators = null; // Timer para el polling de creadores
+let retryAttempts = 0; // For creators list loading
+const UPDATE_POLLING_INTERVAL_MS_CREATORS = 5000; // Interval for creators polling
+let updatePollingTimerCreators = null; // Timer for creators polling
 
 const PLACEHOLDER_AVATAR = 'https://via.placeholder.com/100x100?text=No+Img';
-const FETCH_TIMEOUT_MS = 30000; // Timeout general para fetches
+const FETCH_TIMEOUT_MS = 30000; // General timeout for fetches
 
-// --- OBJETO DE TRADUCCIONES ---
-// Ampliado para incluir las claves de la app de búsqueda
+// --- TRANSLATIONS OBJECT ---
+// Extended to include search app keys
 const translations = {
     en: {
         appName: "Coomer/Kemono Downloader", 
@@ -217,17 +218,17 @@ const translations = {
         unknownError: "Error Desconocido", // Added missing translation key
     }
 };
-// --- FIN OBJETO DE TRADUCCIONES ---
+// --- END TRANSLATIONS OBJECT ---
 
 // --- FUNCIÓN PARA ESTABLECER EL IDIOMA DE LA UI ---
 function setLanguage(lang) {
-    console.log(`[setLanguage] Iniciando con idioma: ${lang}`); // Debug log
+    console.log(`[setLanguage] Iniciando with language: ${lang}`); // Debug log
     currentLanguage = lang;
     document.documentElement.lang = lang; 
     localStorage.setItem('preferredLanguage', lang); 
 
     const t = translations[lang];
-    console.log(`[setLanguage] Objeto de traducción para ${lang}:`, t); // Debug log
+    console.log(`[setLanguage] Translation object for ${lang}:`, t); // Debug log
 
     document.title = t.appName;
 
@@ -270,7 +271,7 @@ function setLanguage(lang) {
     themeToggleButton.querySelector('span').textContent = document.body.classList.contains('dark-mode') ? t.lightModeButton : t.darkModeButton;
     
     // Debug log para currentLanguageText
-    console.log(`[setLanguage] Actualizando currentLanguageText con: ${t[`languageButton${lang.charAt(0).toUpperCase() + lang.slice(1)}`]}`);
+    console.log(`[setLanguage] Updating currentLanguageText with: ${t[`languageButton${lang.charAt(0).toUpperCase() + lang.slice(1)}`]}`);
     currentLanguageText.textContent = t[`languageButton${lang.charAt(0).toUpperCase() + lang.slice(1)}`];
 
     // Actualiza el texto del botón principal de descarga
@@ -304,7 +305,7 @@ function setLanguage(lang) {
 
     // Vuelve a ejecutar la búsqueda para actualizar los mensajes y tarjetas según el idioma
     searchCreators(); 
-    console.log(`[setLanguage] Finalizado para idioma: ${lang}`); // Debug log
+    console.log(`[setLanguage] Finalized for language: ${lang}`); // Debug log
 }
 // --- FIN FUNCIÓN PARA ESTABLECER EL IDIOMA DE LA UI ---
 
@@ -668,6 +669,9 @@ function checkScrapeStatus(taskId) {
 async function loadCreators() {
     console.log("[loadCreators] Iniciado (carga de lista de creadores). Intento actual:", retryAttempts); // Debug log
 
+    const selectedPlatform = searchPlatformSelect.value; // Obtener la plataforma seleccionada
+    console.log(`[loadCreators] Plataforma seleccionada: ${selectedPlatform}`); // Debug log
+
     loadingBarContainerCreators.style.display = 'block';
     
     // Deshabilitar botones relacionados con la búsqueda mientras se carga la lista
@@ -693,8 +697,8 @@ async function loadCreators() {
     }, FETCH_TIMEOUT_MS);
 
     try {
-        console.log(`[loadCreators] Realizando fetch a /api/creators (Intento ${retryAttempts + 1})...`); // Debug log
-        const response = await fetch('/api/creators', { signal: controller.signal }); // Llama al endpoint de tu propio Flask
+        console.log(`[loadCreators] Realizando fetch a /api/creators?platform=${selectedPlatform} (Intento ${retryAttempts + 1})...`); // Debug log
+        const response = await fetch(`/api/creators?platform=${selectedPlatform}`, { signal: controller.signal }); // Llama al endpoint de tu propio Flask
         clearTimeout(timeoutId); 
         console.log("[loadCreators] Respuesta del fetch obtenida:", response); // Debug log
 
@@ -730,7 +734,7 @@ async function loadCreators() {
                 .replace('{time}', updatedTime)
                 .replace('{status}', data.status);
 
-            console.log(`[loadCreators] ¡${creators.length} creadores cargados desde tu servidor local!`); // Debug log
+            console.log(`[loadCreators] ¡${creators.length} creadores cargados desde ${selectedPlatform}!`); // Debug log
             
             // Si el campo de búsqueda está vacío, o no hay resultados para el query actual
             if (mainInput.value.trim() === '' || searchResultsDiv.innerHTML.includes(translations[currentLanguage].noCreatorsFound.replace('\"{}\"', ''))) {
@@ -776,6 +780,7 @@ function searchCreators() {
     console.log("[searchCreators] Iniciado. Query:", mainInput.value); // Debug log
 
     const query = mainInput.value.toLowerCase().trim();
+    const selectedPlatform = searchPlatformSelect.value; // Obtener la plataforma seleccionada
     searchResultsDiv.innerHTML = ''; // Limpia resultados anteriores
 
     if (query.length === 0) {
@@ -796,22 +801,22 @@ function searchCreators() {
         const creatorsToDisplay = foundCreators.slice(0, MAX_RESULTS_TO_DISPLAY);
 
         creatorsToDisplay.forEach(creator => {
-            // Construct banner image URL. Assuming it follows the same pattern as avatar but with 'banners'
-            const bannerImageUrl = `https://img.coomer.su/banners/${creator.service}/${creator.id}`;
+            // Construct banner image URL based on selected platform
+            const bannerImageUrl = `https://img.${selectedPlatform}.su/banners/${creator.service}/${creator.id}`;
             
-            // Determinar la URL de la página del creador basada en el servicio
+            // Determinar la URL de la página del creador basada en el servicio y plataforma
             let creatorPageUrl;
             if (creator.service === 'fansly') {
-                creatorPageUrl = `https://coomer.su/fansly/user/${creator.id}`; // Usar ID para Fansly
+                creatorPageUrl = `https://${selectedPlatform}.su/fansly/user/${creator.id}`; // Usar ID para Fansly
             } else {
-                creatorPageUrl = `https://coomer.su/${creator.service}/user/${creator.name}`; // Usar nombre para otros servicios
+                creatorPageUrl = `https://${selectedPlatform}.su/${creator.service}/user/${creator.name}`; // Usar nombre para otros servicios
             }
 
             const creatorCardHtml = `
                 <a href="${creatorPageUrl}" target="_blank" class="creator-card" style="background-image: url('${bannerImageUrl}'), linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.8));">
                     <div class="creator-card-overlay">
                         <div class="creator-left-content">
-                            <img src="https://img.coomer.su/icons/${creator.service}/${creator.id}" alt="${creator.name}" onerror="this.onerror=null;this.src='${PLACEHOLDER_AVATAR}';">
+                            <img src="https://img.${selectedPlatform}.su/icons/${creator.service}/${creator.id}" alt="${creator.name}" onerror="this.onerror=null;this.src='${PLACEHOLDER_AVATAR}';">
                             <div class="creator-text-container">
                                 <h3 class="creator-name">${creator.name}</h3>
                                 <span class="service-label">${creator.service}</span>
@@ -845,7 +850,7 @@ function searchCreators() {
                 }
 
                 // También rellena los selects de dominio y servicio
-                domainSelect.value = 'coomer.su'; // La API de Coomer devuelve servicios asociados a coomer.su
+                domainSelect.value = `${selectedPlatform}.su`; // Usar la plataforma seleccionada
                 if (['onlyfans', 'patreon', 'fanbox', 'fantia', 'gumroad', 'subscribestar', 'fansly'].includes(creator.service)) {
                     serviceSelect.value = creator.service;
                 } else {
@@ -878,6 +883,8 @@ function searchCreators() {
 
 async function triggerUpdateCreators() {
     console.log("[triggerUpdateCreators] Iniciando actualización manual de la lista de creadores..."); // Debug log
+    const selectedPlatform = searchPlatformSelect.value; // Obtener la plataforma seleccionada
+    
     updateButtonCreators.disabled = true;
     updateStatusCreatorsSpan.textContent = translations[currentLanguage].updatingListWait;
     loadingBarContainerCreators.style.display = 'block';
@@ -889,8 +896,14 @@ async function triggerUpdateCreators() {
     }
 
     try {
-        // Llama al endpoint de tu propio Flask
-        const response = await fetch('/api/update_creators', { method: 'POST' });
+        // Llama al endpoint de tu propio Flask con la plataforma seleccionada
+        const response = await fetch('/api/update_creators', { 
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ platform: selectedPlatform })
+        });
         const data = await response.json();
         
         if (response.ok) {
@@ -919,9 +932,10 @@ function startUpdatePollingCreators() {
     }
 
     updatePollingTimerCreators = setInterval(async () => {
+        const selectedPlatform = searchPlatformSelect.value; // Obtener la plataforma seleccionada
         console.log("[startUpdatePollingCreators] Polling: Verificando estado de la caché de creadores..."); // Debug log
         try {
-            const response = await fetch('/api/creators'); // Llama al endpoint de tu propio Flask
+            const response = await fetch(`/api/creators?platform=${selectedPlatform}`); // Llama al endpoint de tu propio Flask
             const data = await response.json();
 
             if (response.status === 503) {
@@ -982,6 +996,15 @@ offsetEndInput.addEventListener('input', () => validateNumberInput(offsetEndInpu
 
 // Event listener para el botón de actualización de la lista de creadores
 updateButtonCreators.addEventListener('click', triggerUpdateCreators);
+
+// Event listener para el selector de plataforma
+searchPlatformSelect.addEventListener('change', () => {
+    console.log(`[searchPlatformSelect] Plataforma cambiada a: ${searchPlatformSelect.value}`);
+    // Limpiar la lista actual y recargar con la nueva plataforma
+    creators = [];
+    retryAttempts = 0;
+    loadCreators();
+});
 
 // DOMContentLoaded para iniciar la carga de la lista de creadores al cargar la página
 document.addEventListener('DOMContentLoaded', () => {

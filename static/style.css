@@ -787,3 +787,58 @@ body.dark-mode .download-button-card:hover {
         font-size: 0.75em;
     }
 }
+
+.platform-selector {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: var(--container-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.platform-selector label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--label-color);
+    font-size: 1em;
+}
+
+.platform-selector select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--container-bg-color);
+    color: var(--text-color);
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.2s ease;
+}
+
+.platform-selector select:focus {
+    border-color: var(--focus-border-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+body.dark-mode #searchFunctionalityContainer {
+    background-color: var(--advanced-options-bg);
+    border-color: var(--advanced-options-border);
+}
+
+body.dark-mode .platform-selector {
+    background-color: var(--container-bg-color);
+    border-color: var(--border-color);
+}
+
+body.dark-mode .platform-selector select {
+    background-color: var(--container-bg-color);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+body.dark-mode .platform-selector select:focus {
+    border-color: var(--focus-border-color);
+    box-shadow: 0 0 0 3px rgba(138, 164, 255, 0.25);
+}

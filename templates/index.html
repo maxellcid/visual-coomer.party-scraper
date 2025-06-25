@@ -104,6 +104,15 @@
         <!-- NUEVA SECCIÓN: Contenedor para la funcionalidad de búsqueda de creadores -->
         <!-- ========================================================= -->
         <div id="searchFunctionalityContainer">
+            <!-- Selector de plataforma para el buscador -->
+            <div class="platform-selector">
+                <label for="searchPlatform" data-lang-key="searchPlatformLabel">Plataforma para búsqueda:</label>
+                <select id="searchPlatform" name="searchPlatform">
+                    <option value="coomer" selected>Coomer</option>
+                    <option value="kemono">Kemono</option>
+                </select>
+            </div>
+            
             <div id="loadingBarContainerCreators"> <!-- ID ÚNICO para la barra de carga de creadores -->
                 <div id="loadingBarCreators"></div>
             </div>
