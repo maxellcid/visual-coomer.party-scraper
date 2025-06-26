@@ -9,17 +9,78 @@ import time
 import json # New: for handling creators cache
 from datetime import datetime, timedelta # New: for cache logic
 import logging # Already was, but mentioned for its use in cache
+import logging.handlers
 
 # Import the API client for Coomer/Kemono. Make sure this file exists in the same folder.
 from coomer_api_client import CoomerApiClient
+from cache_manager import (
+    load_cache_from_file,
+    save_cache_to_file,
+    update_creators_cache_in_background,
+    clear_cache
+)
 
-# Logging Configuration
-logging.basicConfig(level=logging.INFO, format='[%(asctime)s] %(message)s')
+# Configuración de logging
+LOG_FILE = 'logs/app.log'
+MAX_LOG_SIZE = 5 * 1024 * 1024  # 5MB
+BACKUP_COUNT = 3
 
+# Configuración completa de logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.handlers.RotatingFileHandler(
+            LOG_FILE,
+            maxBytes=MAX_LOG_SIZE,
+            backupCount=BACKUP_COUNT,
+            encoding='utf-8'
+        ),
+        logging.StreamHandler()
+    ]
+)
+
+# Logger principal
+logger = logging.getLogger('coomer_scraper')
+logger.setLevel(logging.INFO)
+
+# Logger específico para la API
+api_logger = logging.getLogger('coomer_scraper.api')
+api_logger.setLevel(logging.INFO)
+
+# Logger específico para las tareas de scraping
+scrape_logger = logging.getLogger('coomer_scraper.scrape')
+scrape_logger.setLevel(logging.INFO)
+
+# Asegurarse que la carpeta de logs exista
+os.makedirs('logs', exist_ok=True)
+
+# Configuración de logging para Flask
 app = Flask(__name__)
+app.logger.name = 'coomer_scraper.flask'
+app.logger.setLevel(logging.INFO)
+
+# Configuración de logging para el API client
+api_client = CoomerApiClient()
+api_client.logger = api_logger
 
 # Dictionary to store scraping task status
 scrape_tasks = {}
+
+# Inicializar la aplicación solo si se está ejecutando directamente
+if __name__ == '__main__':
+    # Cargar cache
+    load_cache_from_file()
+    # Iniciar actualización en background
+    threading.Thread(target=update_creators_cache_in_background).start()
+
+# Endpoint de health
+@app.route('/health')
+def health():
+    return jsonify({
+        'status': 'healthy',
+        'cache_status': cache_status_message
+    })
 
 # =========================================================
 # NEW: Cache Logic for Creators List (from search functionality)
@@ -155,9 +216,12 @@ def update_creators_cache_in_background(force_update=False, platform=None):
     finally:
         cache_lock.release() # Ensure lock is always released
 
+# Global API client instance
+api_client = None
+
 def initialize_app_on_startup():
     """Runs once when starting the application to load and update creators cache."""
-    global cache_status_message
+    global cache_status_message, api_client
     
     # 1. Try to load cache from local file
     if load_cache_from_file():
@@ -167,8 +231,31 @@ def initialize_app_on_startup():
     else:
         cache_status_message = {"coomer": "Empty cache. Starting background download.", "kemono": "Empty cache. Starting background download."}
 
-    # 2. Start background update thread for both platforms
-    threading.Thread(target=update_creators_cache_in_background).start()
+    # 2. Initialize API client if not already initialized
+    if api_client is None:
+        api_client = CoomerApiClient()
+
+    # 3. Start background update thread for both platforms
+    thread = threading.Thread(target=update_creators_cache_in_background, args=(api_client,), daemon=True)
+    thread.start()
+
+# Inicializar la aplicación solo si se está ejecutando directamente
+if __name__ == '__main__':
+    # Initialize logging
+    logger.setLevel(logging.INFO)
+    api_logger.setLevel(logging.INFO)
+    scrape_logger.setLevel(logging.INFO)
+    
+    # Initialize Flask app
+    app = Flask(__name__)
+    app.logger.name = 'coomer_scraper.flask'
+    
+    # Initialize the application
+    initialize_app_on_startup()
+    
+    # Initialize cache
+    initialize_app_on_startup()
+
 # =========================================================
 # FIN: Cache Logic for Creators List (from search functionality)
 # =========================================================
@@ -180,20 +267,23 @@ def index():
 
 @app.route('/scrape', methods=['POST'])
 def scrape():
-    url_from_frontend = request.form.get('url')
+    # Validar datos requeridos
+    required_fields = ['username', 'domain', 'service']
+    if not all(request.form.get(field) for field in required_fields):
+        return jsonify({
+            "status": "error",
+            "message": "Missing required fields: username, domain, and service"
+        }), 400
+
+    # Obtener datos del formulario
+    username = request.form.get('username')
+    domain = request.form.get('domain')
+    service = request.form.get('service')
     
-    if not url_from_frontend:
-        username = request.form.get('username')
-        domain = request.form.get('domain')
-        service = request.form.get('service')
+    # Construir URL
+    final_url = f"https://{domain}/{service}/user/{username}"
 
-        if not username:
-            return jsonify({"status": "error", "message": "The username or URL is required."}), 400
-        
-        final_url = f"https://{domain}/{service}/user/{username}"
-    else:
-        final_url = url_from_frontend
-
+    # Obtener opciones adicionales
     output_dir = request.form.get('output_dir', './mi_descarga')
     sub_folders = request.form.get('sub_folders') == 'on'
     skip_vids = request.form.get('skip_vids') == 'on'

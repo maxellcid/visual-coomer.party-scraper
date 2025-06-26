@@ -84,6 +84,15 @@ Use the "Dark Mode" / "Light Mode" button to switch between light and dark theme
 ![Interface](./img/Interface.png)
 
 
+## Cache System
+
+The application now includes a robust cache system for creators' data:
+
+- **Automatic Updates**: The creator list updates automatically every 24 hours from the last update.
+- **Background Updates**: Updates run in the background without blocking the application.
+- **Thread Safety**: Uses thread-safe operations to prevent race conditions.
+- **Error Handling**: Includes proper error handling and logging for cache operations.
+
 ## A Note on Scraping
 
 This version is confirmed to work as of June 20, 2025. This approach uses the API when possible, which increases the reliability that it will continue to work in the future. Nevertheless, if you encounter any problems, please open an issue.

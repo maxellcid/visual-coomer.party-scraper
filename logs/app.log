@@ -1,0 +1,643 @@
+{
+    "creators": {},
+    "last_updated": {}
+}2025-06-25 20:40:02,761 - coomer_scraper.cache - INFO - Cache saved to 'logs/app.log'.
+2025-06-25 20:40:02,761 - coomer_scraper.cache - ERROR - Error reading cache JSON file 'logs/app.log': Extra data: line 4 column 2 (char 46)
+2025-06-25 20:40:02,806 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:40:02,835 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:40:27,614 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:40:27,659 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:40:27,672 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:40:27,684 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:40:27,697 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:40:27,711 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:41:44,064 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:41:44,107 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:41:44,108 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:41:44,111 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:41:44,113 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:41:44,116 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:41:44,117 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:41:44,119 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:41:44,120 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:41:44,142 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:41:44,144 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:41:44,148 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:46:12,001 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:46:12,044 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:46:12,045 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:46:12,049 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:46:12,050 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:46:12,053 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:46:12,054 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:46:12,055 - coomer_scraper.cache - INFO - Cache saved to 'tests/test_cache.json'.
+2025-06-25 20:46:12,056 - coomer_scraper.cache - INFO - Cache loaded from 'tests/test_cache.json' with 0 total elements.
+2025-06-25 20:46:12,056 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:46:12,094 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:46:12,095 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:46:12,106 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:46:12,121 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:46:12,126 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:46:52,755 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:46:52,797 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:46:52,799 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:46:52,802 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:46:52,804 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:46:52,807 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:46:52,808 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:46:52,809 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:46:52,847 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:46:52,848 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:46:52,864 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:46:52,865 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:46:52,876 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:47:59,273 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:47:59,316 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:47:59,317 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:47:59,321 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:47:59,322 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:47:59,325 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:47:59,326 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:47:59,327 - coomer_scraper.cache - INFO - Cache saved to 'tests/test_cache.json'.
+2025-06-25 20:47:59,327 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:47:59,328 - coomer_scraper.cache - INFO - Cache loaded from 'tests/test_cache.json' with 0 total elements.
+2025-06-25 20:47:59,328 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:47:59,366 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:47:59,368 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:47:59,388 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:47:59,392 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:47:59,397 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:48:56,024 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:48:56,067 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:48:56,068 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:48:56,071 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:48:56,073 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:48:56,076 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:48:56,077 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:48:56,078 - coomer_scraper.cache - ERROR - Error saving cache to 'tests/test_cache.json': Cache data is empty or invalid format
+2025-06-25 20:48:56,079 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:48:56,117 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:48:56,119 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:48:56,132 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:48:56,145 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:48:56,149 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:49:42,528 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:49:42,571 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:49:42,573 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:49:42,576 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:49:42,577 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:49:42,580 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:49:42,582 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:49:42,583 - coomer_scraper.cache - INFO - Cache saved to 'tests/test_cache.json'.
+2025-06-25 20:49:42,583 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:49:42,583 - coomer_scraper.cache - INFO - Cache loaded from 'tests/test_cache.json' with 0 total elements.
+2025-06-25 20:49:42,583 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:49:42,621 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:49:42,623 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:49:42,646 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:49:42,649 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:49:42,654 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:50:56,065 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:50:56,108 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:50:56,109 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:50:56,113 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:50:56,114 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:50:56,117 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:50:56,118 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:50:56,119 - coomer_scraper.cache - INFO - Cache saved to 'tests/test_cache.json'.
+2025-06-25 20:50:56,120 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:50:56,120 - coomer_scraper.cache - INFO - Cache loaded from 'tests/test_cache.json' with 0 total elements.
+2025-06-25 20:50:56,120 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:50:56,158 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:50:56,160 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:50:56,180 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:50:56,182 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:50:56,187 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:53:16,214 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:53:16,257 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:53:16,258 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:53:16,261 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:53:16,262 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:53:16,266 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:53:16,267 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:53:16,268 - coomer_scraper.cache - INFO - Cache saved to 'tests/test_cache.json'.
+2025-06-25 20:53:16,268 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:53:16,269 - coomer_scraper.cache - INFO - Cache loaded from 'tests/test_cache.json' with 0 total elements.
+2025-06-25 20:53:16,269 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:53:16,308 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:53:16,309 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:53:16,328 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:53:16,330 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:53:16,336 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:54:08,409 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:54:08,453 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:54:08,454 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:54:08,458 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:54:08,459 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:54:08,462 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:54:08,464 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:54:08,465 - coomer_scraper.cache - INFO - Cache saved to 'tests/test_cache.json'.
+2025-06-25 20:54:08,465 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:54:08,466 - coomer_scraper.cache - INFO - Cache loaded from 'tests/test_cache.json' with 0 total elements.
+2025-06-25 20:54:08,466 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:54:08,505 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:54:08,506 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:54:08,528 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:54:08,530 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:54:08,536 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:55:39,362 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:55:39,405 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:55:39,406 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:55:39,410 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:55:39,411 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:55:39,414 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:55:39,416 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:55:39,417 - coomer_scraper.cache - INFO - Cache saved to 'tests/test_cache.json'.
+2025-06-25 20:55:39,417 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:55:39,417 - coomer_scraper.cache - INFO - Cache loaded from 'tests/test_cache.json' with 0 total elements.
+2025-06-25 20:55:39,417 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:55:39,456 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:55:39,457 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:55:39,472 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:55:39,483 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:55:39,489 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:56:25,233 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:56:25,276 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:56:25,277 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:56:25,280 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:56:25,282 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:56:25,285 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:56:25,286 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:56:25,287 - coomer_scraper.cache - INFO - Cache saved to 'tests/test_cache.json'.
+2025-06-25 20:56:25,287 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:56:25,288 - coomer_scraper.cache - INFO - Cache loaded from 'tests/test_cache.json' with 0 total elements.
+2025-06-25 20:56:25,288 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:56:25,326 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:56:25,328 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:56:25,348 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:56:25,350 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:56:25,354 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:58:34,189 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:58:34,232 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:58:34,233 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:58:34,236 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:58:34,238 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:58:34,241 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:58:34,242 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:58:34,243 - coomer_scraper.cache - ERROR - Error saving cache to 'tests/test_cache.json': 'str' object has no attribute 'isoformat'
+2025-06-25 20:58:34,244 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:58:34,282 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:58:34,284 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:58:34,309 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:58:34,313 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:58:34,318 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:59:09,772 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:59:09,815 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:59:09,816 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:59:09,820 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:59:09,821 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:59:09,824 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:59:09,825 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:59:09,827 - coomer_scraper.cache - INFO - Cache saved to 'tests/test_cache.json'.
+2025-06-25 20:59:09,827 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:59:09,827 - coomer_scraper.cache - ERROR - Unexpected error loading cache from 'tests/test_cache.json': name 'creators' is not defined
+2025-06-25 20:59:09,828 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:59:09,866 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:59:09,868 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:59:09,888 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:59:09,891 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:59:09,895 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:59:48,103 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:59:48,145 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:59:48,147 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:59:48,150 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:59:48,151 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:59:48,154 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:59:48,156 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:59:48,157 - coomer_scraper.cache - INFO - Cache saved to 'tests/test_cache.json'.
+2025-06-25 20:59:48,157 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:59:48,158 - coomer_scraper.cache - INFO - Cache loaded from 'tests/test_cache.json' with 1 total elements.
+2025-06-25 20:59:48,158 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:59:48,159 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:59:48,160 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:59:48,182 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:59:48,188 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 20:59:48,194 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:09:01,994 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:09:02,036 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:09:02,037 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:09:02,040 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:09:02,042 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:09:02,044 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:09:02,046 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:09:02,047 - coomer_scraper.cache - INFO - Cache saved to 'tests/test_cache.json'.
+2025-06-25 21:09:02,047 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:09:02,047 - coomer_scraper.cache - INFO - Cache loaded from 'tests/test_cache.json' with 1 total elements.
+2025-06-25 21:09:02,048 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:09:02,048 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:09:02,050 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:09:02,071 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:09:02,074 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:09:02,079 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:09:21,002 - coomer_scraper.cache - INFO - Cache file 'tests/test_cache.json' not found.
+2025-06-25 21:09:21,003 - coomer_scraper.cache - INFO - Attempting to download latest creators list from coomer API...
+2025-06-25 21:09:21,826 - root - INFO - Cache loaded from 'creators_cache.json' with 292249 total elements.
+2025-06-25 21:09:21,826 - root - INFO - Creators cache for coomer updated less than 24 hours ago. No download required.
+2025-06-25 21:09:21,829 - root - INFO - Creators cache for kemono updated less than 24 hours ago. No download required.
+2025-06-25 21:09:22,775 - root - INFO - Cache loaded from 'creators_cache.json' with 292249 total elements.
+2025-06-25 21:09:22,776 - root - INFO - Creators cache for coomer updated less than 24 hours ago. No download required.
+2025-06-25 21:09:22,776 - root - INFO - Creators cache for kemono updated less than 24 hours ago. No download required.
+2025-06-25 21:09:22,796 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-25 21:09:22,796 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-25 21:09:22,802 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-06-25 21:09:23,133 - coomer_scraper.cache - INFO - Cache file 'tests/test_cache.json' not found.
+2025-06-25 21:09:23,134 - coomer_scraper.cache - INFO - Attempting to download latest creators list from coomer API...
+2025-06-25 21:09:23,985 - root - INFO - Cache loaded from 'creators_cache.json' with 292249 total elements.
+2025-06-25 21:09:23,985 - root - INFO - Creators cache for coomer updated less than 24 hours ago. No download required.
+2025-06-25 21:09:23,989 - root - INFO - Creators cache for kemono updated less than 24 hours ago. No download required.
+2025-06-25 21:09:24,961 - root - INFO - Cache loaded from 'creators_cache.json' with 292249 total elements.
+2025-06-25 21:09:24,962 - root - INFO - Creators cache for coomer updated less than 24 hours ago. No download required.
+2025-06-25 21:09:24,962 - root - INFO - Creators cache for kemono updated less than 24 hours ago. No download required.
+2025-06-25 21:09:24,977 - werkzeug - WARNING -  * Debugger is active!
+2025-06-25 21:09:24,977 - werkzeug - INFO -  * Debugger PIN: 306-295-639
+2025-06-25 21:09:46,476 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:09:46] "GET / HTTP/1.1" 200 -
+2025-06-25 21:09:46,714 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:09:46] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-06-25 21:09:46,720 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:09:46] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2025-06-25 21:09:49,492 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:09:49] "GET /api/creators?platform=coomer HTTP/1.1" 200 -
+2025-06-25 21:09:55,861 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:09:55] "POST /scrape HTTP/1.1" 200 -
+2025-06-25 21:09:58,939 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:09:58] "GET /status/ec583385-a617-41f6-b17e-f07b13c10d55 HTTP/1.1" 200 -
+2025-06-25 21:10:02,997 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:10:02] "GET /status/ec583385-a617-41f6-b17e-f07b13c10d55 HTTP/1.1" 200 -
+2025-06-25 21:10:04,907 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:10:04] "GET /status/ec583385-a617-41f6-b17e-f07b13c10d55 HTTP/1.1" 200 -
+2025-06-25 21:10:07,977 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:10:07] "GET /status/ec583385-a617-41f6-b17e-f07b13c10d55 HTTP/1.1" 200 -
+2025-06-25 21:10:10,938 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:10:10] "GET /status/ec583385-a617-41f6-b17e-f07b13c10d55 HTTP/1.1" 200 -
+2025-06-25 21:10:13,943 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:10:13] "GET /status/ec583385-a617-41f6-b17e-f07b13c10d55 HTTP/1.1" 200 -
+2025-06-25 21:10:16,912 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:10:16] "GET /status/ec583385-a617-41f6-b17e-f07b13c10d55 HTTP/1.1" 200 -
+2025-06-25 21:10:19,079 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:10:19] "GET /api/creators?platform=coomer HTTP/1.1" 200 -
+2025-06-25 21:12:23,036 - coomer_scraper.cache - INFO - Cache file 'tests/test_cache.json' not found.
+2025-06-25 21:12:23,036 - coomer_scraper.cache - INFO - Attempting to download latest creators list from coomer API...
+2025-06-25 21:12:23,894 - root - INFO - Cache loaded from 'creators_cache.json' with 292249 total elements.
+2025-06-25 21:12:23,895 - root - INFO - Creators cache for coomer updated less than 24 hours ago. No download required.
+2025-06-25 21:12:23,899 - root - INFO - Creators cache for kemono updated less than 24 hours ago. No download required.
+2025-06-25 21:12:24,891 - root - INFO - Cache loaded from 'creators_cache.json' with 292249 total elements.
+2025-06-25 21:12:24,891 - root - INFO - Creators cache for coomer updated less than 24 hours ago. No download required.
+2025-06-25 21:12:24,892 - root - INFO - Creators cache for kemono updated less than 24 hours ago. No download required.
+2025-06-25 21:13:58,132 - werkzeug - INFO -  * Detected change in '/home/maxellcid/Desarrollo/GitHub/Proyectos/visual-coomer.party-scraper/cache_manager.py', reloading
+2025-06-25 21:13:58,134 - werkzeug - INFO -  * Detected change in '/home/maxellcid/Desarrollo/GitHub/Proyectos/visual-coomer.party-scraper/cache_manager.py', reloading
+2025-06-25 21:13:58,166 - werkzeug - INFO -  * Detected change in '/home/maxellcid/Desarrollo/GitHub/Proyectos/visual-coomer.party-scraper/cache_manager.py', reloading
+2025-06-25 21:13:58,680 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-06-25 21:14:47,559 - coomer_scraper.cache - INFO - Cache file 'tests/test_cache.json' not found.
+2025-06-25 21:14:48,402 - root - INFO - Cache loaded from 'creators_cache.json' with 292249 total elements.
+2025-06-25 21:14:48,402 - root - INFO - Attempting to download latest creators list from coomer API...
+2025-06-25 21:15:13,855 - root - INFO - Cache saved to 'creators_cache.json'.
+2025-06-25 21:15:13,856 - root - INFO - Successful download from coomer. Creators found: 196855
+2025-06-25 21:15:13,856 - root - INFO - Attempting to download latest creators list from kemono API...
+2025-06-25 21:15:52,114 - root - INFO - Cache saved to 'creators_cache.json'.
+2025-06-25 21:15:52,115 - root - INFO - Successful download from kemono. Creators found: 95540
+2025-06-25 21:15:52,116 - root - INFO - Creators cache for coomer updated less than 24 hours ago. No download required.
+2025-06-25 21:15:52,127 - root - INFO - Creators cache for kemono updated less than 24 hours ago. No download required.
+2025-06-25 21:15:53,074 - root - INFO - Cache loaded from 'creators_cache.json' with 292395 total elements.
+2025-06-25 21:15:53,074 - root - INFO - Attempting to download latest creators list from coomer API...
+2025-06-25 21:16:16,822 - root - INFO - Cache saved to 'creators_cache.json'.
+2025-06-25 21:16:16,823 - root - INFO - Successful download from coomer. Creators found: 196855
+2025-06-25 21:16:16,823 - root - INFO - Attempting to download latest creators list from kemono API...
+2025-06-25 21:16:33,631 - root - INFO - Cache saved to 'creators_cache.json'.
+2025-06-25 21:16:33,631 - root - INFO - Successful download from kemono. Creators found: 95540
+2025-06-25 21:16:33,632 - root - INFO - Creators cache for coomer updated less than 24 hours ago. No download required.
+2025-06-25 21:16:33,637 - root - INFO - Creators cache for kemono updated less than 24 hours ago. No download required.
+2025-06-25 21:16:33,659 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-25 21:16:33,659 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-25 21:16:33,689 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-06-25 21:16:34,026 - coomer_scraper.cache - INFO - Cache file 'tests/test_cache.json' not found.
+2025-06-25 21:16:34,869 - root - INFO - Cache loaded from 'creators_cache.json' with 292395 total elements.
+2025-06-25 21:16:34,869 - root - INFO - Attempting to download latest creators list from coomer API...
+2025-06-25 21:17:00,379 - root - INFO - Cache saved to 'creators_cache.json'.
+2025-06-25 21:17:00,380 - root - INFO - Successful download from coomer. Creators found: 196855
+2025-06-25 21:17:00,380 - root - INFO - Attempting to download latest creators list from kemono API...
+2025-06-25 21:17:16,526 - root - INFO - Cache saved to 'creators_cache.json'.
+2025-06-25 21:17:16,527 - root - INFO - Successful download from kemono. Creators found: 95540
+2025-06-25 21:17:16,527 - root - INFO - Creators cache for coomer updated less than 24 hours ago. No download required.
+2025-06-25 21:17:16,532 - root - INFO - Creators cache for kemono updated less than 24 hours ago. No download required.
+2025-06-25 21:17:17,512 - root - INFO - Cache loaded from 'creators_cache.json' with 292395 total elements.
+2025-06-25 21:17:17,512 - root - INFO - Attempting to download latest creators list from coomer API...
+2025-06-25 21:17:46,308 - root - INFO - Cache saved to 'creators_cache.json'.
+2025-06-25 21:17:46,309 - root - INFO - Successful download from coomer. Creators found: 196855
+2025-06-25 21:17:46,309 - root - INFO - Attempting to download latest creators list from kemono API...
+2025-06-25 21:18:01,780 - root - INFO - Cache saved to 'creators_cache.json'.
+2025-06-25 21:18:01,780 - root - INFO - Successful download from kemono. Creators found: 95540
+2025-06-25 21:18:01,781 - root - INFO - Creators cache for coomer updated less than 24 hours ago. No download required.
+2025-06-25 21:18:01,782 - root - INFO - Creators cache for kemono updated less than 24 hours ago. No download required.
+2025-06-25 21:18:01,810 - werkzeug - WARNING -  * Debugger is active!
+2025-06-25 21:18:01,810 - werkzeug - INFO -  * Debugger PIN: 127-555-558
+2025-06-25 21:27:42,352 - coomer_scraper.cache - INFO - Cache file 'tests/test_cache.json' not found.
+2025-06-25 21:27:43,195 - root - INFO - Cache loaded from 'creators_cache.json' with 292395 total elements.
+2025-06-25 21:27:43,196 - root - INFO - Attempting to download latest creators list from coomer API...
+2025-06-25 21:27:44,216 - root - INFO - Cache loaded from 'creators_cache.json' with 292395 total elements.
+2025-06-25 21:27:44,216 - root - INFO - Background update attempt: cache lock already in use. Skipping this execution.
+2025-06-25 21:27:44,236 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-25 21:27:44,237 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-25 21:27:44,242 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-06-25 21:27:44,586 - coomer_scraper.cache - INFO - Cache file 'tests/test_cache.json' not found.
+2025-06-25 21:27:45,400 - root - INFO - Cache loaded from 'creators_cache.json' with 292395 total elements.
+2025-06-25 21:27:45,401 - root - INFO - Attempting to download latest creators list from coomer API...
+2025-06-25 21:27:46,394 - root - INFO - Cache loaded from 'creators_cache.json' with 292395 total elements.
+2025-06-25 21:27:46,395 - root - INFO - Background update attempt: cache lock already in use. Skipping this execution.
+2025-06-25 21:27:46,410 - werkzeug - WARNING -  * Debugger is active!
+2025-06-25 21:27:46,411 - werkzeug - INFO -  * Debugger PIN: 127-555-558
+2025-06-25 21:28:14,145 - root - INFO - Cache saved to 'creators_cache.json'.
+2025-06-25 21:28:14,146 - root - INFO - Successful download from coomer. Creators found: 196856
+2025-06-25 21:28:14,147 - root - INFO - Attempting to download latest creators list from kemono API...
+2025-06-25 21:28:36,393 - root - INFO - Cache saved to 'creators_cache.json'.
+2025-06-25 21:28:36,394 - root - INFO - Successful download from coomer. Creators found: 196856
+2025-06-25 21:28:36,394 - root - INFO - Attempting to download latest creators list from kemono API...
+2025-06-25 21:29:20,912 - coomer_scraper.cache - INFO - Cache file 'tests/test_cache.json' not found.
+2025-06-25 21:29:21,776 - root - INFO - Cache loaded from 'creators_cache.json' with 292396 total elements.
+2025-06-25 21:29:21,777 - root - INFO - Attempting to download latest creators list from coomer API...
+2025-06-25 21:29:22,760 - root - INFO - Cache loaded from 'creators_cache.json' with 292396 total elements.
+2025-06-25 21:29:22,760 - root - INFO - Background update attempt: cache lock already in use. Skipping this execution.
+2025-06-25 21:29:22,780 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-25 21:29:22,780 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-25 21:29:22,786 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-06-25 21:29:23,120 - coomer_scraper.cache - INFO - Cache file 'tests/test_cache.json' not found.
+2025-06-25 21:29:23,969 - root - INFO - Cache loaded from 'creators_cache.json' with 292396 total elements.
+2025-06-25 21:29:23,970 - root - INFO - Attempting to download latest creators list from coomer API...
+2025-06-25 21:29:24,966 - root - INFO - Cache loaded from 'creators_cache.json' with 292396 total elements.
+2025-06-25 21:29:24,967 - root - INFO - Background update attempt: cache lock already in use. Skipping this execution.
+2025-06-25 21:29:24,981 - werkzeug - WARNING -  * Debugger is active!
+2025-06-25 21:29:24,982 - werkzeug - INFO -  * Debugger PIN: 127-555-558
+2025-06-25 21:29:49,416 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:29:49] "GET / HTTP/1.1" 200 -
+2025-06-25 21:29:49,689 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:29:49] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-06-25 21:29:49,693 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:29:49] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2025-06-25 21:29:55,767 - root - WARNING - Cache lock in use, unable to get creators list in time.
+2025-06-25 21:29:55,769 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:29:55] "[35m[1mGET /api/creators?platform=coomer HTTP/1.1[0m" 503 -
+2025-06-25 21:30:05,450 - root - WARNING - Cache lock in use, unable to get creators list in time.
+2025-06-25 21:30:05,453 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:30:05] "[35m[1mGET /api/creators?platform=coomer HTTP/1.1[0m" 503 -
+2025-06-25 21:30:13,504 - root - WARNING - Cache lock in use, unable to get creators list in time.
+2025-06-25 21:30:13,505 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:30:13] "[35m[1mGET /api/creators?platform=coomer HTTP/1.1[0m" 503 -
+2025-06-25 21:30:20,063 - root - INFO - Cache saved to 'creators_cache.json'.
+2025-06-25 21:30:20,065 - root - INFO - Successful download from coomer. Creators found: 196856
+2025-06-25 21:30:20,065 - root - INFO - Attempting to download latest creators list from kemono API...
+2025-06-25 21:30:21,629 - root - WARNING - Cache lock in use, unable to get creators list in time.
+2025-06-25 21:30:21,632 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:30:21] "[35m[1mGET /api/creators?platform=coomer HTTP/1.1[0m" 503 -
+2025-06-25 21:30:30,990 - root - WARNING - Cache lock in use, unable to get creators list in time.
+2025-06-25 21:30:30,991 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:30:30] "[35m[1mGET /api/creators?platform=coomer HTTP/1.1[0m" 503 -
+2025-06-25 21:30:39,055 - root - WARNING - Cache lock in use, unable to get creators list in time.
+2025-06-25 21:30:39,056 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:30:39] "[35m[1mGET /api/creators?platform=coomer HTTP/1.1[0m" 503 -
+2025-06-25 21:30:41,155 - root - INFO - Cache saved to 'creators_cache.json'.
+2025-06-25 21:30:41,155 - root - INFO - Successful download from coomer. Creators found: 196856
+2025-06-25 21:30:41,156 - root - INFO - Attempting to download latest creators list from kemono API...
+2025-06-25 21:30:47,090 - root - WARNING - Cache lock in use, unable to get creators list in time.
+2025-06-25 21:30:47,091 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:30:47] "[35m[1mGET /api/creators?platform=coomer HTTP/1.1[0m" 503 -
+2025-06-25 21:30:51,781 - root - INFO - Cache saved to 'creators_cache.json'.
+2025-06-25 21:30:51,781 - root - INFO - Successful download from kemono. Creators found: 95540
+2025-06-25 21:30:54,035 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:30:54] "GET /api/creators?platform=coomer HTTP/1.1" 200 -
+2025-06-25 21:31:10,209 - root - INFO - Cache saved to 'creators_cache.json'.
+2025-06-25 21:31:10,209 - root - INFO - Successful download from kemono. Creators found: 95540
+2025-06-25 21:33:53,342 - coomer_scraper.cache - INFO - Cache file 'tests/test_cache.json' not found.
+2025-06-25 21:33:54,275 - root - INFO - Cache loaded from 'creators_cache.json' with 292396 total elements.
+2025-06-25 21:33:54,275 - root - INFO - Attempting to download latest creators list from coomer API...
+2025-06-25 21:33:55,319 - root - INFO - Cache loaded from 'creators_cache.json' with 292396 total elements.
+2025-06-25 21:33:55,320 - root - INFO - Background update attempt: cache lock already in use. Skipping this execution.
+2025-06-25 21:33:55,343 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-25 21:33:55,343 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-25 21:33:55,350 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-06-25 21:33:55,704 - coomer_scraper.cache - INFO - Cache file 'tests/test_cache.json' not found.
+2025-06-25 21:33:56,609 - root - INFO - Cache loaded from 'creators_cache.json' with 292396 total elements.
+2025-06-25 21:33:56,610 - root - INFO - Attempting to download latest creators list from coomer API...
+2025-06-25 21:33:57,624 - root - INFO - Cache loaded from 'creators_cache.json' with 292396 total elements.
+2025-06-25 21:33:57,625 - root - INFO - Background update attempt: cache lock already in use. Skipping this execution.
+2025-06-25 21:33:57,640 - werkzeug - WARNING -  * Debugger is active!
+2025-06-25 21:33:57,640 - werkzeug - INFO -  * Debugger PIN: 127-555-558
+2025-06-25 21:34:22,794 - root - INFO - Cache saved to 'creators_cache.json'.
+2025-06-25 21:34:22,795 - root - INFO - Successful download from coomer. Creators found: 196856
+2025-06-25 21:34:22,796 - root - INFO - Attempting to download latest creators list from kemono API...
+2025-06-25 21:34:52,998 - root - INFO - Cache saved to 'creators_cache.json'.
+2025-06-25 21:34:52,999 - root - INFO - Successful download from kemono. Creators found: 95540
+2025-06-25 21:34:55,879 - root - INFO - Cache saved to 'creators_cache.json'.
+2025-06-25 21:34:55,880 - root - INFO - Successful download from coomer. Creators found: 196856
+2025-06-25 21:34:55,881 - root - INFO - Attempting to download latest creators list from kemono API...
+2025-06-25 21:35:34,172 - root - INFO - Cache saved to 'creators_cache.json'.
+2025-06-25 21:35:34,174 - root - INFO - Successful download from kemono. Creators found: 95540
+2025-06-25 21:38:08,933 - coomer_scraper.cache - INFO - Cache file 'tests/test_cache.json' not found.
+2025-06-25 21:38:09,775 - root - INFO - Cache loaded from 'creators_cache.json' with 292396 total elements.
+2025-06-25 21:38:09,776 - root - INFO - Attempting to download latest creators list from coomer API...
+2025-06-25 21:38:10,786 - root - INFO - Cache loaded from 'creators_cache.json' with 292396 total elements.
+2025-06-25 21:38:10,786 - root - INFO - Background update attempt: cache lock already in use. Skipping this execution.
+2025-06-25 21:38:10,807 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-25 21:38:10,807 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-25 21:38:10,812 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-06-25 21:38:11,159 - coomer_scraper.cache - INFO - Cache file 'tests/test_cache.json' not found.
+2025-06-25 21:38:12,001 - root - INFO - Cache loaded from 'creators_cache.json' with 292396 total elements.
+2025-06-25 21:38:12,001 - root - INFO - Attempting to download latest creators list from coomer API...
+2025-06-25 21:38:13,043 - root - INFO - Cache loaded from 'creators_cache.json' with 292396 total elements.
+2025-06-25 21:38:13,045 - root - INFO - Background update attempt: cache lock already in use. Skipping this execution.
+2025-06-25 21:38:13,062 - werkzeug - WARNING -  * Debugger is active!
+2025-06-25 21:38:13,063 - werkzeug - INFO -  * Debugger PIN: 127-555-558
+2025-06-25 21:38:24,343 - werkzeug - INFO -  * Detected change in '/home/maxellcid/Desarrollo/GitHub/Proyectos/visual-coomer.party-scraper/app.py', reloading
+2025-06-25 21:38:24,344 - werkzeug - INFO -  * Detected change in '/home/maxellcid/Desarrollo/GitHub/Proyectos/visual-coomer.party-scraper/app.py', reloading
+2025-06-25 21:38:24,420 - werkzeug - INFO -  * Detected change in '/home/maxellcid/Desarrollo/GitHub/Proyectos/visual-coomer.party-scraper/app.py', reloading
+2025-06-25 21:38:25,178 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-06-25 21:38:25,515 - coomer_scraper.cache - INFO - Cache file 'tests/test_cache.json' not found.
+2025-06-25 21:38:26,366 - root - INFO - Cache loaded from 'creators_cache.json' with 292396 total elements.
+2025-06-25 21:38:26,367 - root - INFO - Attempting to download latest creators list from coomer API...
+2025-06-25 21:38:27,360 - root - INFO - Cache loaded from 'creators_cache.json' with 292396 total elements.
+2025-06-25 21:38:27,361 - root - INFO - Background update attempt: cache lock already in use. Skipping this execution.
+2025-06-25 21:38:28,326 - root - INFO - Cache loaded from 'creators_cache.json' with 292396 total elements.
+2025-06-25 21:38:28,327 - root - INFO - Background update attempt: cache lock already in use. Skipping this execution.
+2025-06-25 21:38:28,342 - werkzeug - WARNING -  * Debugger is active!
+2025-06-25 21:38:28,342 - werkzeug - INFO -  * Debugger PIN: 127-555-558
+2025-06-25 21:38:35,623 - root - INFO - Cache saved to 'creators_cache.json'.
+2025-06-25 21:38:35,623 - root - INFO - Successful download from coomer. Creators found: 196856
+2025-06-25 21:38:35,623 - root - INFO - Attempting to download latest creators list from kemono API...
+2025-06-25 21:38:36,373 - coomer_scraper.cache - INFO - Cache file 'tests/test_cache.json' not found.
+2025-06-25 21:38:37,242 - root - INFO - Cache loaded from 'creators_cache.json' with 292396 total elements.
+2025-06-25 21:38:37,243 - root - INFO - Attempting to download latest creators list from coomer API...
+2025-06-25 21:38:38,248 - root - INFO - Cache loaded from 'creators_cache.json' with 292396 total elements.
+2025-06-25 21:38:38,249 - root - INFO - Background update attempt: cache lock already in use. Skipping this execution.
+2025-06-25 21:38:39,401 - root - INFO - Cache loaded from 'creators_cache.json' with 292396 total elements.
+2025-06-25 21:38:39,402 - root - INFO - Background update attempt: cache lock already in use. Skipping this execution.
+2025-06-25 21:38:56,353 - root - INFO - Cache saved to 'creators_cache.json'.
+2025-06-25 21:38:56,353 - root - INFO - Successful download from coomer. Creators found: 196856
+2025-06-25 21:38:56,353 - root - INFO - Attempting to download latest creators list from kemono API...
+2025-06-25 21:39:27,285 - coomer_scraper.cache - INFO - Cache file 'tests/test_cache.json' not found.
+2025-06-25 21:39:28,083 - root - ERROR - Error reading cache JSON file 'creators_cache.json': Expecting ',' delimiter: line 1739763 column 38 (char 55506397)
+2025-06-25 21:39:28,084 - root - INFO - Attempting to download latest creators list from coomer API...
+2025-06-25 21:39:28,856 - root - ERROR - Error reading cache JSON file 'creators_cache.json': Expecting ',' delimiter: line 1739763 column 38 (char 55506397)
+2025-06-25 21:39:28,857 - root - INFO - Background update attempt: cache lock already in use. Skipping this execution.
+2025-06-25 21:39:29,627 - root - ERROR - Error reading cache JSON file 'creators_cache.json': Expecting ',' delimiter: line 1739763 column 38 (char 55506397)
+2025-06-25 21:39:29,628 - root - INFO - Background update attempt: cache lock already in use. Skipping this execution.
+2025-06-25 21:39:29,649 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-25 21:39:29,649 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-25 21:39:29,654 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-06-25 21:39:29,990 - coomer_scraper.cache - INFO - Cache file 'tests/test_cache.json' not found.
+2025-06-25 21:39:30,759 - root - ERROR - Error reading cache JSON file 'creators_cache.json': Expecting ',' delimiter: line 1739763 column 38 (char 55506397)
+2025-06-25 21:39:30,760 - root - INFO - Attempting to download latest creators list from coomer API...
+2025-06-25 21:39:31,574 - root - ERROR - Error reading cache JSON file 'creators_cache.json': Expecting ',' delimiter: line 1739763 column 38 (char 55506397)
+2025-06-25 21:39:31,576 - root - INFO - Background update attempt: cache lock already in use. Skipping this execution.
+2025-06-25 21:39:32,387 - root - ERROR - Error reading cache JSON file 'creators_cache.json': Expecting ',' delimiter: line 1739763 column 38 (char 55506397)
+2025-06-25 21:39:32,388 - root - INFO - Background update attempt: cache lock already in use. Skipping this execution.
+2025-06-25 21:39:32,404 - werkzeug - WARNING -  * Debugger is active!
+2025-06-25 21:39:32,405 - werkzeug - INFO -  * Debugger PIN: 127-555-558
+2025-06-25 21:39:59,518 - root - INFO - Cache saved to 'creators_cache.json'.
+2025-06-25 21:39:59,518 - root - INFO - Successful download from coomer. Creators found: 196856
+2025-06-25 21:39:59,519 - root - INFO - Attempting to download latest creators list from kemono API...
+2025-06-25 21:40:12,901 - root - INFO - Cache saved to 'creators_cache.json'.
+2025-06-25 21:40:12,902 - root - INFO - Successful download from coomer. Creators found: 196856
+2025-06-25 21:40:12,902 - root - INFO - Attempting to download latest creators list from kemono API...
+2025-06-25 21:40:22,323 - root - INFO - Cache saved to 'creators_cache.json'.
+2025-06-25 21:40:22,324 - root - INFO - Successful download from kemono. Creators found: 95540
+2025-06-25 21:40:36,865 - root - INFO - Cache saved to 'creators_cache.json'.
+2025-06-25 21:40:36,866 - root - INFO - Successful download from kemono. Creators found: 95541
+2025-06-25 21:45:41,853 - coomer_scraper.cache - INFO - Cache file 'tests/test_cache.json' not found.
+2025-06-25 21:45:41,855 - coomer_scraper.cache - INFO - Creators cache for coomer updated less than 24 hours ago. No download required.
+2025-06-25 21:45:41,856 - coomer_scraper.cache - INFO - Creators cache for kemono updated less than 24 hours ago. No download required.
+2025-06-25 21:45:42,726 - root - INFO - Cache loaded from 'creators_cache.json' with 292397 total elements.
+2025-06-25 21:45:42,726 - root - INFO - Attempting to download latest creators list from coomer API...
+2025-06-25 21:45:43,744 - root - INFO - Cache loaded from 'creators_cache.json' with 292397 total elements.
+2025-06-25 21:45:43,745 - root - INFO - Background update attempt: cache lock already in use. Skipping this execution.
+2025-06-25 21:45:44,733 - root - INFO - Cache loaded from 'creators_cache.json' with 292397 total elements.
+2025-06-25 21:45:44,734 - root - INFO - Background update attempt: cache lock already in use. Skipping this execution.
+2025-06-25 21:45:44,754 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-25 21:45:44,754 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-25 21:45:44,760 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-06-25 21:45:45,347 - coomer_scraper.cache - INFO - Cache file 'tests/test_cache.json' not found.
+2025-06-25 21:45:45,348 - coomer_scraper.cache - INFO - Creators cache for coomer updated less than 24 hours ago. No download required.
+2025-06-25 21:45:45,350 - coomer_scraper.cache - INFO - Creators cache for kemono updated less than 24 hours ago. No download required.
+2025-06-25 21:45:46,255 - root - INFO - Cache loaded from 'creators_cache.json' with 292397 total elements.
+2025-06-25 21:45:46,255 - root - INFO - Attempting to download latest creators list from coomer API...
+2025-06-25 21:45:47,264 - root - INFO - Cache loaded from 'creators_cache.json' with 292397 total elements.
+2025-06-25 21:45:47,264 - root - INFO - Background update attempt: cache lock already in use. Skipping this execution.
+2025-06-25 21:45:48,251 - root - INFO - Cache loaded from 'creators_cache.json' with 292397 total elements.
+2025-06-25 21:45:48,251 - root - INFO - Background update attempt: cache lock already in use. Skipping this execution.
+2025-06-25 21:45:48,268 - werkzeug - WARNING -  * Debugger is active!
+2025-06-25 21:45:48,269 - werkzeug - INFO -  * Debugger PIN: 127-555-558
+2025-06-25 21:46:42,139 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:46:42,182 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:46:42,183 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:46:42,186 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:46:42,188 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:46:42,191 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:46:42,192 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:46:42,193 - coomer_scraper.cache - INFO - Cache saved to 'tests/test_cache.json'.
+2025-06-25 21:46:42,194 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:46:42,194 - coomer_scraper.cache - INFO - Cache loaded from 'tests/test_cache.json' with 1 total elements.
+2025-06-25 21:46:42,194 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:46:42,195 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:46:42,196 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:46:42,215 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:46:42,217 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:46:42,223 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:47:17,528 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:47:17,570 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:47:17,572 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:47:17,575 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:47:17,576 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:47:17,579 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:47:17,580 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:47:17,581 - coomer_scraper.cache - INFO - Cache saved to 'tests/test_cache.json'.
+2025-06-25 21:47:17,582 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:47:17,582 - coomer_scraper.cache - INFO - Cache loaded from 'tests/test_cache.json' with 1 total elements.
+2025-06-25 21:47:17,582 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:47:17,583 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:47:17,584 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:47:17,607 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:47:17,610 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:47:17,614 - coomer_scraper.cache - INFO - Cache cleared
+2025-06-25 21:47:45,273 - coomer_scraper.cache - INFO - Cache file 'tests/test_cache.json' not found.
+2025-06-25 21:47:45,274 - coomer_scraper.cache - INFO - Creators cache for coomer updated less than 24 hours ago. No download required.
+2025-06-25 21:47:45,278 - coomer_scraper.cache - INFO - Creators cache for kemono updated less than 24 hours ago. No download required.
+2025-06-25 21:47:46,113 - root - INFO - Cache loaded from 'creators_cache.json' with 292397 total elements.
+2025-06-25 21:47:46,114 - root - INFO - Attempting to download latest creators list from coomer API...
+2025-06-25 21:47:47,091 - root - INFO - Cache loaded from 'creators_cache.json' with 292397 total elements.
+2025-06-25 21:47:47,092 - root - INFO - Background update attempt: cache lock already in use. Skipping this execution.
+2025-06-25 21:47:48,049 - root - INFO - Cache loaded from 'creators_cache.json' with 292397 total elements.
+2025-06-25 21:47:48,049 - root - INFO - Background update attempt: cache lock already in use. Skipping this execution.
+2025-06-25 21:47:48,069 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-25 21:47:48,069 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-25 21:47:48,075 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-06-25 21:47:48,392 - coomer_scraper.cache - INFO - Cache file 'tests/test_cache.json' not found.
+2025-06-25 21:47:48,395 - coomer_scraper.cache - INFO - Creators cache for coomer updated less than 24 hours ago. No download required.
+2025-06-25 21:47:48,396 - coomer_scraper.cache - INFO - Creators cache for kemono updated less than 24 hours ago. No download required.
+2025-06-25 21:47:49,244 - root - INFO - Cache loaded from 'creators_cache.json' with 292397 total elements.
+2025-06-25 21:47:49,245 - root - INFO - Attempting to download latest creators list from coomer API...
+2025-06-25 21:47:50,232 - root - INFO - Cache loaded from 'creators_cache.json' with 292397 total elements.
+2025-06-25 21:47:50,233 - root - INFO - Background update attempt: cache lock already in use. Skipping this execution.
+2025-06-25 21:47:51,205 - root - INFO - Cache loaded from 'creators_cache.json' with 292397 total elements.
+2025-06-25 21:47:51,206 - root - INFO - Background update attempt: cache lock already in use. Skipping this execution.
+2025-06-25 21:47:51,221 - werkzeug - WARNING -  * Debugger is active!
+2025-06-25 21:47:51,221 - werkzeug - INFO -  * Debugger PIN: 306-295-639
+2025-06-25 21:48:17,460 - root - INFO - Cache saved to 'creators_cache.json'.
+2025-06-25 21:48:17,460 - root - INFO - Successful download from coomer. Creators found: 196856
+2025-06-25 21:48:17,460 - root - INFO - Attempting to download latest creators list from kemono API...
+2025-06-25 21:48:31,748 - coomer_scraper.cache - INFO - Cache file 'tests/test_cache.json' not found.
+2025-06-25 21:48:31,751 - coomer_scraper.cache - INFO - Creators cache for coomer updated less than 24 hours ago. No download required.
+2025-06-25 21:48:31,752 - coomer_scraper.cache - INFO - Background update attempt for kemono: cache lock already in use. Skipping this execution.
+2025-06-25 21:48:32,638 - root - INFO - Cache loaded from 'creators_cache.json' with 292397 total elements.
+2025-06-25 21:48:32,639 - root - INFO - Attempting to download latest creators list from coomer API...
+2025-06-25 21:48:33,685 - root - INFO - Cache loaded from 'creators_cache.json' with 292397 total elements.
+2025-06-25 21:48:33,686 - root - INFO - Background update attempt: cache lock already in use. Skipping this execution.
+2025-06-25 21:48:34,709 - root - INFO - Cache loaded from 'creators_cache.json' with 292397 total elements.
+2025-06-25 21:48:34,710 - root - INFO - Background update attempt: cache lock already in use. Skipping this execution.
+2025-06-25 21:48:34,730 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-25 21:48:34,730 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-25 21:48:34,736 - werkzeug - INFO -  * Restarting with watchdog (inotify)
+2025-06-25 21:48:35,081 - coomer_scraper.cache - INFO - Cache file 'tests/test_cache.json' not found.
+2025-06-25 21:48:35,084 - coomer_scraper.cache - INFO - Creators cache for coomer updated less than 24 hours ago. No download required.
+2025-06-25 21:48:35,085 - coomer_scraper.cache - INFO - Background update attempt for kemono: cache lock already in use. Skipping this execution.
+2025-06-25 21:48:35,933 - root - INFO - Cache loaded from 'creators_cache.json' with 292397 total elements.
+2025-06-25 21:48:35,934 - root - INFO - Attempting to download latest creators list from coomer API...
+2025-06-25 21:48:36,935 - root - INFO - Cache loaded from 'creators_cache.json' with 292397 total elements.
+2025-06-25 21:48:36,935 - root - INFO - Background update attempt: cache lock already in use. Skipping this execution.
+2025-06-25 21:48:37,899 - root - INFO - Cache loaded from 'creators_cache.json' with 292397 total elements.
+2025-06-25 21:48:37,900 - root - INFO - Background update attempt: cache lock already in use. Skipping this execution.
+2025-06-25 21:48:37,914 - werkzeug - WARNING -  * Debugger is active!
+2025-06-25 21:48:37,915 - werkzeug - INFO -  * Debugger PIN: 306-295-639
+2025-06-25 21:48:42,614 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:48:42] "GET / HTTP/1.1" 200 -
+2025-06-25 21:48:43,610 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:48:43] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-06-25 21:48:43,615 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:48:43] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2025-06-25 21:48:48,834 - root - WARNING - Cache lock in use, unable to get creators list in time.
+2025-06-25 21:48:48,836 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:48:48] "[35m[1mGET /api/creators?platform=coomer HTTP/1.1[0m" 503 -
+2025-06-25 21:48:57,945 - root - WARNING - Cache lock in use, unable to get creators list in time.
+2025-06-25 21:48:57,947 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:48:57] "[35m[1mGET /api/creators?platform=coomer HTTP/1.1[0m" 503 -
+2025-06-25 21:49:01,533 - root - INFO - Cache saved to 'creators_cache.json'.
+2025-06-25 21:49:01,533 - root - INFO - Successful download from coomer. Creators found: 196856
+2025-06-25 21:49:01,533 - root - INFO - Attempting to download latest creators list from kemono API...
+2025-06-25 21:49:06,100 - root - WARNING - Cache lock in use, unable to get creators list in time.
+2025-06-25 21:49:06,101 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:49:06] "[35m[1mGET /api/creators?platform=coomer HTTP/1.1[0m" 503 -
+2025-06-25 21:49:14,189 - root - WARNING - Cache lock in use, unable to get creators list in time.
+2025-06-25 21:49:14,191 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:49:14] "[35m[1mGET /api/creators?platform=coomer HTTP/1.1[0m" 503 -
+2025-06-25 21:49:20,235 - root - INFO - Cache saved to 'creators_cache.json'.
+2025-06-25 21:49:20,235 - root - INFO - Successful download from kemono. Creators found: 95541
+2025-06-25 21:49:22,486 - root - WARNING - Cache lock in use, unable to get creators list in time.
+2025-06-25 21:49:22,488 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:49:22] "[35m[1mGET /api/creators?platform=coomer HTTP/1.1[0m" 503 -
+2025-06-25 21:49:31,067 - root - WARNING - Cache lock in use, unable to get creators list in time.
+2025-06-25 21:49:31,070 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:49:31] "[35m[1mGET /api/creators?platform=coomer HTTP/1.1[0m" 503 -
+2025-06-25 21:49:31,899 - root - INFO - Cache saved to 'creators_cache.json'.
+2025-06-25 21:49:31,900 - root - INFO - Successful download from coomer. Creators found: 196856
+2025-06-25 21:49:31,901 - root - INFO - Attempting to download latest creators list from kemono API...
+2025-06-25 21:49:39,160 - root - WARNING - Cache lock in use, unable to get creators list in time.
+2025-06-25 21:49:39,161 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:49:39] "[35m[1mGET /api/creators?platform=coomer HTTP/1.1[0m" 503 -
+2025-06-25 21:49:47,233 - root - WARNING - Cache lock in use, unable to get creators list in time.
+2025-06-25 21:49:47,236 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:49:47] "[35m[1mGET /api/creators?platform=coomer HTTP/1.1[0m" 503 -
+2025-06-25 21:49:55,488 - root - WARNING - Cache lock in use, unable to get creators list in time.
+2025-06-25 21:49:55,491 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:49:55] "[35m[1mGET /api/creators?platform=coomer HTTP/1.1[0m" 503 -
+2025-06-25 21:49:56,433 - root - INFO - Cache saved to 'creators_cache.json'.
+2025-06-25 21:49:56,433 - root - INFO - Successful download from kemono. Creators found: 95541
+2025-06-25 21:50:00,691 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:50:00] "GET /api/creators?platform=coomer HTTP/1.1" 200 -
+2025-06-25 21:50:48,953 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:50:48] "POST /scrape HTTP/1.1" 200 -
+2025-06-25 21:50:54,191 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:50:54] "GET /status/d42c9d8e-fd03-472e-bcbc-12c526e67df3 HTTP/1.1" 200 -
+2025-06-25 21:50:55,025 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:50:55] "GET /status/d42c9d8e-fd03-472e-bcbc-12c526e67df3 HTTP/1.1" 200 -
+2025-06-25 21:50:58,015 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:50:58] "GET /status/d42c9d8e-fd03-472e-bcbc-12c526e67df3 HTTP/1.1" 200 -
+2025-06-25 21:51:01,083 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:51:01] "GET /status/d42c9d8e-fd03-472e-bcbc-12c526e67df3 HTTP/1.1" 200 -
+2025-06-25 21:51:04,008 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:51:04] "GET /status/d42c9d8e-fd03-472e-bcbc-12c526e67df3 HTTP/1.1" 200 -
+2025-06-25 21:51:08,017 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:51:08] "GET /status/d42c9d8e-fd03-472e-bcbc-12c526e67df3 HTTP/1.1" 200 -
+2025-06-25 21:51:10,199 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:51:10] "GET /api/creators?platform=coomer HTTP/1.1" 200 -
